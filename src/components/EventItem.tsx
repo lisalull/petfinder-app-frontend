@@ -6,7 +6,12 @@ interface Props {
 }
 
 const EventItem = ({ event }: Props) => {
-  return <li className="EventItem">{event.description}</li>;
+  return (
+    <li className="EventItem">
+      <p>{event.description}</p>
+      {event.media && <img src={event.media} alt="user upload" />}
+    </li>
+  );
 };
 
 export default EventItem;
