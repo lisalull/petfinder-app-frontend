@@ -1,0 +1,29 @@
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #bb1717;
+  padding: 10px;
+}
+
+.Header h1 {
+  color: white;
+}
+
+.Header .link {
+  text-decoration: none;
+  color: white;
+}
+
+.Header .searchLinks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.Header button {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
