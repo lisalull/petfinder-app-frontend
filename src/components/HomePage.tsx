@@ -1,30 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import EventsContext from "../context/EventsContext";
-import Event from "../models/Event";
-import { addEvent, getEvents } from "../services/EventsService";
+import EventsContext from "../context/EventsContext";
 import "./HomePage.css";
 import ProjectMap from "./ProjectMap";
 
 const HomePage = () => {
-  const [events, setEvents] = useState<Event[]>([]);
-  // const {events} = useContext(EventsContext)
+  const { events } = useContext(EventsContext);
 
-  useEffect(() => {
-    getEventsHandler();
-  }, []);
-
-  const getEventsHandler = (): void => {
-    getEvents().then((response) => {
-      setEvents(response);
-    });
-  };
-
-  // const addEventHandler = (event: Event): void => {
-  //   addEvent(event).then(() => {
-  //     getEventsHandler();
-  //   });
-  // };
+  console.log(events);
 
   return (
     <div className="HomePage">

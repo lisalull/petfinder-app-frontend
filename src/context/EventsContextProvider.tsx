@@ -1,7 +1,7 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Event from "../models/Event";
 import EventsContext from "./EventsContext";
-// import { getEvents } from "../services/EventsService";
+import { addEvent, getEvents } from "../services/EventsService";
 
 interface Props {
   children: ReactNode;
@@ -10,14 +10,24 @@ interface Props {
 const EventsContextProvider = ({ children }: Props) => {
   const [events, setEvents] = useState<Event[]>([]);
 
-  //   const getEventsHandler = (): void => {
-  //     getEvents().then((response) => {
-  //       setEvents(response);
-  //     });
-  //   };
+  useEffect(() => {
+    getEventsHandler();
+  }, []);
+
+  const getEventsHandler = (): void => {
+    getEvents().then((response) => {
+      setEvents(response);
+    });
+  };
+
+  const addEventHandler = (event: Event): void => {
+    addEvent(event).then(() => {
+      getEventsHandler();
+    });
+  };
 
   return (
-    <EventsContext.Provider value={{ events }}>
+    <EventsContext.Provider value={{ events, addEventHandler }}>
       {children}
     </EventsContext.Provider>
   );
