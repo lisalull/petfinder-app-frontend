@@ -9,6 +9,10 @@ interface Props {
 
 const EventsContextProvider = ({ children }: Props) => {
   const [events, setEvents] = useState<Event[]>([]);
+  const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
+
+  const [categoryFilter, setCategoryFilter] = useState<string>("");
+  const [typeFilter, setTypeFilter] = useState<string>("");
 
   useEffect(() => {
     getEventsHandler();
@@ -17,7 +21,25 @@ const EventsContextProvider = ({ children }: Props) => {
   const getEventsHandler = (): void => {
     getEvents().then((response) => {
       setEvents(response);
+      setFilteredEvents(response);
     });
+  };
+
+  const getEventsByCategory = (category: string): void => {
+    setCategoryFilter(category);
+    if (category) {
+      const filteredArray = events.filter((item) => item.category === category);
+      setFilteredEvents(filteredArray);
+    } else {
+      setFilteredEvents(events);
+    }
+  };
+  const getEventsByType = (type: string): void => {
+    setTypeFilter(type);
+    if (type) {
+      const filteredArray = events.filter((item) => item.type === type);
+      setFilteredEvents(filteredArray);
+    }
   };
 
   const addEventHandler = (event: Event): void => {
@@ -27,7 +49,9 @@ const EventsContextProvider = ({ children }: Props) => {
   };
 
   return (
-    <EventsContext.Provider value={{ events, addEventHandler }}>
+    <EventsContext.Provider
+      value={{ filteredEvents, addEventHandler, getEventsByCategory }}
+    >
       {children}
     </EventsContext.Provider>
   );

@@ -22,6 +22,11 @@ const FoundForm = () => {
       lng: -83.73,
       returned: false,
       uid: "abcdef",
+      type: "abcdef",
+      displayName: "abcdef",
+      phoneNumber: "abcdef",
+      email: "abcdef",
+      preferedContact: "abcdef",
     };
     const files = fileInputRef.current?.files;
     if (files && files[0]) {

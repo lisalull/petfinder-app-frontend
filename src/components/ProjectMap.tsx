@@ -9,7 +9,7 @@ import EventsContext from "../context/EventsContext";
 const key = process.env.REACT_APP_API_KEY || "";
 
 const ProjectMap = () => {
-  const { events } = useContext(EventsContext);
+  const { filteredEvents } = useContext(EventsContext);
   const [showIndex, setShowIndex] = useState(-1);
   // const [markers, setMarkers] = useState<Marker[]>(
   // [
@@ -58,7 +58,7 @@ const ProjectMap = () => {
         defaultZoom={10}
         // onClick={createMarker}
       >
-        {events?.map((event, i) => (
+        {filteredEvents?.map((event, i) => (
           <MapMarker
             lat={event.lat}
             lng={event.lng}

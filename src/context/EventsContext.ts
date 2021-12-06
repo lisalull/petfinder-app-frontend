@@ -2,13 +2,15 @@ import { createContext, useContext } from "react";
 import Event from "../models/Event";
 
 interface EventsContextModel {
-  events: Event[];
+  filteredEvents: Event[];
   addEventHandler: (event: Event) => void;
+  getEventsByCategory: (category: string) => void;
 }
 
 const defaultValues: EventsContextModel = {
-  events: [],
+  filteredEvents: [],
   addEventHandler: () => {},
+  getEventsByCategory: () => {},
 };
 
 const EventsContext = createContext(defaultValues);

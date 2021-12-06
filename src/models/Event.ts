@@ -10,4 +10,9 @@ export default interface Event {
   media?: string;
   uid: string;
   returned: boolean;
+  type: string;
+  displayName: string;
+  phoneNumber: string;
+  email: string;
+  preferedContact: string;
 }
