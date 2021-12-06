@@ -12,7 +12,6 @@ const Details = () => {
   useEffect(() => {
     getEventById(id);
   }, [id]);
-
   return <div className="Details"></div>;
 };
 
