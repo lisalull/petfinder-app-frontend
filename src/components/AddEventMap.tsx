@@ -10,6 +10,17 @@ const key = process.env.REACT_APP_API_KEY || "";
 
 const AddEventMap = () => {
   const [marker, setMarker] = useState<Marker>();
+  const [mapCenter, setMapCenter] = useState<Marker>({
+    lat: 42.278046,
+    lng: -83.73822,
+  });
+
+  // const onClickHandler = (e: GoogleMapReact.ClickEventValue) => {
+  //   if (e.event.target.parentNode.ariaLabel === "Map") {
+  //     setMarker({ lat: e.lat, lng: e.lng });
+  //     setMarkerCoordinates({ lat: e.lat, lng: e.lng });
+  //   }
+  // };
 
   const createMarker = (e: GoogleMapReact.ClickEventValue) => {
     if (e.event.target.parentNode.ariaLabel === "Map") {
@@ -18,6 +29,7 @@ const AddEventMap = () => {
         lng: e.lng,
       };
       setMarker(newMarker);
+      setMapCenter(newMarker);
     }
   };
 
@@ -25,7 +37,7 @@ const AddEventMap = () => {
     <div className="AddEventMap" style={{ height: "75vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key }}
-        defaultCenter={{ lat: 42.278046, lng: -83.73822 }}
+        center={mapCenter}
         defaultZoom={10}
         onClick={createMarker}
       >
