@@ -1,32 +1,44 @@
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import EventsContext from "../context/EventsContext";
 import EventsList from "./EventsList";
 import "./HomePage.css";
-import ProjectMap from "./ProjectMap";
+import DisplayMap from "./DisplayMap";
+import AddEventMap from "./AddEventMap";
 
 const HomePage = () => {
-  const { filteredEvents, getEventsByCategory } = useContext(EventsContext);
+  const {
+    filteredEvents,
+    getEventsByCategory,
+    getEventsByType,
+    setShowDisplayMapHandler,
+    showDisplayMap,
+    showAddEventMap,
+    setShowAddEventMapHandler,
+  } = useContext(EventsContext);
+  console.log(showDisplayMap, showAddEventMap);
 
   return (
     <div className="HomePage">
       <button onClick={() => getEventsByCategory("")}>All</button>
-      <button onClick={() => getEventsByCategory("lost")}>Lost</button>
-      <button onClick={() => getEventsByCategory("found")}>Found</button>
-      <button onClick={() => getEventsByCategory("sightings")}>
+      <button onClick={() => getEventsByCategory("Lost")}>Lost</button>
+      <button onClick={() => getEventsByCategory("Found")}>Found</button>
+      <button onClick={() => getEventsByCategory("Sightings")}>
         Sightings
       </button>
-      <ProjectMap />
-      <EventsList events={filteredEvents} />
-      <Link to="report-lost">
-        <p>Report Lost Pet</p>
-      </Link>
-      <Link to="report-found">
-        <p>Report Found Pet</p>
-      </Link>
-      <Link to="report-sighting">
-        <p>Report Pet Sighting</p>
-      </Link>
+      <button onClick={() => getEventsByType("")}>All</button>
+      <button onClick={() => getEventsByType("cat")}>Cat</button>
+      <button onClick={() => getEventsByType("dog")}>Dog</button>
+      <button onClick={() => getEventsByType("other")}>Other</button>
+      <label className="switch">
+        <input type="checkbox" onClick={setShowDisplayMapHandler} />
+        <span className="slider round"></span>
+      </label>
+      <button onClick={setShowAddEventMapHandler}>Add Event</button>
+      {showDisplayMap && <DisplayMap />}
+      {showAddEventMap && <AddEventMap />}
+      {!showDisplayMap && !showAddEventMap && (
+        <EventsList events={filteredEvents} />
+      )}
     </div>
   );
 };

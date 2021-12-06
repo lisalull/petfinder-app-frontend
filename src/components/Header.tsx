@@ -13,15 +13,9 @@ const Header = () => {
       <Link className="link" to="/">
         <h1>Find My Pawrents</h1>
       </Link>
-      <div className="searchLinks">
-        <Link className="link" to="/lost">
-          <p>Search Lost</p>
-        </Link>
-        <i className="fas fa-paw"></i>
-        <Link className="link" to="/found">
-          <p>Search Found</p>
-        </Link>
-      </div>
+
+      <i className="fas fa-paw"></i>
+
       {user ? (
         <div>
           <button onClick={signOut}>Sign out</button>

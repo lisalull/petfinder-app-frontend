@@ -1,4 +1,4 @@
-import "./ProjectMap.css";
+import "./DisplayMap.css";
 import GoogleMapReact from "google-map-react";
 import Center from "../models/Center";
 import MapMarker from "./MapMarker";
@@ -8,7 +8,7 @@ import EventsContext from "../context/EventsContext";
 
 const key = process.env.REACT_APP_API_KEY || "";
 
-const ProjectMap = () => {
+const DisplayMap = () => {
   const { filteredEvents } = useContext(EventsContext);
   const [showIndex, setShowIndex] = useState(-1);
   // const [markers, setMarkers] = useState<Marker[]>(
@@ -51,7 +51,7 @@ const ProjectMap = () => {
   // };
 
   return (
-    <div className="ProjectMap" style={{ height: "75vh", width: "100%" }}>
+    <div className="DisplayMap" style={{ height: "75vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key }}
         defaultCenter={{ lat: 42.278046, lng: -83.73822 }}
@@ -73,4 +73,4 @@ const ProjectMap = () => {
   );
 };
 
-export default ProjectMap;
+export default DisplayMap;
