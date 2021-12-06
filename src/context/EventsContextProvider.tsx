@@ -10,7 +10,8 @@ interface Props {
 const EventsContextProvider = ({ children }: Props) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
-
+  const [showDisplayMap, setShowDisplayMap] = useState<boolean>(false);
+  const [showAddEventMap, setShowAddEventMap] = useState<boolean>(false);
   const [categoryFilter, setCategoryFilter] = useState<string>("");
   const [typeFilter, setTypeFilter] = useState<string>("");
 
@@ -28,17 +29,47 @@ const EventsContextProvider = ({ children }: Props) => {
   const getEventsByCategory = (category: string): void => {
     setCategoryFilter(category);
     if (category) {
-      const filteredArray = events.filter((item) => item.category === category);
-      setFilteredEvents(filteredArray);
+      if (typeFilter) {
+        const filteredArray = events.filter(
+          (item) => item.category === category && item.type === typeFilter
+        );
+        setFilteredEvents(filteredArray);
+      } else {
+        const filteredArray = events.filter(
+          (item) => item.category === category
+        );
+        setFilteredEvents(filteredArray);
+      }
     } else {
-      setFilteredEvents(events);
+      if (typeFilter) {
+        const filteredArray = events.filter((item) => item.type === typeFilter);
+        setFilteredEvents(filteredArray);
+      } else {
+        setFilteredEvents(events);
+      }
     }
   };
   const getEventsByType = (type: string): void => {
     setTypeFilter(type);
     if (type) {
-      const filteredArray = events.filter((item) => item.type === type);
-      setFilteredEvents(filteredArray);
+      if (categoryFilter) {
+        const filteredArray = events.filter(
+          (item) => item.type === type && item.category === categoryFilter
+        );
+        setFilteredEvents(filteredArray);
+      } else {
+        const filteredArray = events.filter((item) => item.type === type);
+        setFilteredEvents(filteredArray);
+      }
+    } else {
+      if (categoryFilter) {
+        const filteredArray = events.filter(
+          (item) => item.category === categoryFilter
+        );
+        setFilteredEvents(filteredArray);
+      } else {
+        setFilteredEvents(events);
+      }
     }
   };
 
@@ -48,9 +79,27 @@ const EventsContextProvider = ({ children }: Props) => {
     });
   };
 
+  const setShowAddEventMapHandler = () => {
+    setShowDisplayMap(false);
+    showAddEventMap ? setShowAddEventMap(false) : setShowAddEventMap(true);
+  };
+  const setShowDisplayMapHandler = () => {
+    setShowAddEventMap(false);
+    showDisplayMap ? setShowDisplayMap(false) : setShowDisplayMap(true);
+  };
+
   return (
     <EventsContext.Provider
-      value={{ filteredEvents, addEventHandler, getEventsByCategory }}
+      value={{
+        filteredEvents,
+        addEventHandler,
+        getEventsByCategory,
+        getEventsByType,
+        showDisplayMap,
+        setShowDisplayMapHandler,
+        showAddEventMap,
+        setShowAddEventMapHandler,
+      }}
     >
       {children}
     </EventsContext.Provider>

@@ -4,7 +4,6 @@ import EventsContext from "../context/EventsContext";
 import { storage } from "../firebaseConfig";
 import Event from "../models/Event";
 import "./FoundForm.css";
-import ProjectMap from "./ProjectMap";
 
 const FoundForm = () => {
   const [dateFound, setDateFound] = useState("");
@@ -67,7 +66,6 @@ const FoundForm = () => {
         <label htmlFor="foundLocation">Mark Location Found: </label>
         <button>Submit</button>
       </form>
-      <ProjectMap />
     </div>
   );
 };
