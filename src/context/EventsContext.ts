@@ -6,6 +6,8 @@ import Marker from "../models/Marker";
 interface EventsContextModel {
   filteredEvents: Event[];
   events: Event[];
+  typeFilter: string;
+  categoryFilter: string;
   // addEventHandler: (event: Event) => void;
   getEventsByCategory: (category: string) => void;
   getEventsByType: (type: string) => void;
@@ -21,6 +23,8 @@ interface EventsContextModel {
 const defaultValues: EventsContextModel = {
   filteredEvents: [],
   events: [],
+  typeFilter: "",
+  categoryFilter: "",
   // addEventHandler: () => {},
   getEventsByCategory: () => {},
   getEventsByType: () => {},

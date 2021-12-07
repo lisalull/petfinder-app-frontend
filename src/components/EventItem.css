@@ -1,8 +1,24 @@
+.EventItem {
+  list-style: none;
+  width: 80vw;
+  margin: 20px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(235, 231, 231);
+}
+
 .EventItem img {
   width: 200px;
 }
 
-.EventItem {
-  text-decoration: none;
-  border: solid 5px;
+.EventItem.lost {
+  border: solid 5px #05832f;
+}
+.EventItem.found {
+  border: solid 5px #7406a0;
+}
+.EventItem.sighting {
+  border: solid 5px #0518bb;
 }

@@ -108,6 +108,8 @@ const EventsContextProvider = ({ children }: Props) => {
       value={{
         events,
         filteredEvents,
+        categoryFilter,
+        typeFilter,
         getEventsHandler,
         getEventsByCategory,
         getEventsByType,

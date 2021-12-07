@@ -13,19 +13,71 @@ const HomePage = () => {
     setShowDisplayMapHandler,
     showDisplayMap,
     showAddEventMap,
+    typeFilter,
+    categoryFilter,
     setShowAddEventMapHandler,
   } = useContext(EventsContext);
 
   return (
     <div className="HomePage">
-      <button onClick={() => getEventsByCategory("")}>All</button>
-      <button onClick={() => getEventsByCategory("lost")}>Lost</button>
-      <button onClick={() => getEventsByCategory("found")}>Found</button>
-      <button onClick={() => getEventsByCategory("sighting")}>Sightings</button>
-      <button onClick={() => getEventsByType("")}>All</button>
-      <button onClick={() => getEventsByType("cat")}>Cat</button>
-      <button onClick={() => getEventsByType("dog")}>Dog</button>
-      <button onClick={() => getEventsByType("other")}>Other</button>
+      <div className="filterButtons">
+        <button
+          className={`${!categoryFilter ? "selected" : ""}`}
+          onClick={() => getEventsByCategory("")}
+        >
+          All
+        </button>
+        <button
+          className={`lostButton ${
+            categoryFilter === "lost" ? "selected" : ""
+          }`}
+          onClick={() => getEventsByCategory("lost")}
+        >
+          Lost
+        </button>
+        <button
+          className={`foundButton ${
+            categoryFilter === "found" ? "selected" : ""
+          }`}
+          onClick={() => getEventsByCategory("found")}
+        >
+          Found
+        </button>
+        <button
+          className={`sightingButton ${
+            categoryFilter === "sighting" ? "selected" : ""
+          }`}
+          onClick={() => getEventsByCategory("sighting")}
+        >
+          Sightings
+        </button>
+      </div>
+      <div className="filterButtons">
+        <button
+          className={`${!typeFilter ? "selected" : ""}`}
+          onClick={() => getEventsByType("")}
+        >
+          All
+        </button>
+        <button
+          className={`${typeFilter === "cat" ? "selected" : ""}`}
+          onClick={() => getEventsByType("cat")}
+        >
+          Cat
+        </button>
+        <button
+          className={`${typeFilter === "dog" ? "selected" : ""}`}
+          onClick={() => getEventsByType("dog")}
+        >
+          Dog
+        </button>
+        <button
+          className={`${typeFilter === "other" ? "selected" : ""}`}
+          onClick={() => getEventsByType("other")}
+        >
+          Other
+        </button>
+      </div>
       <label className="switch">
         <input type="checkbox" onClick={setShowDisplayMapHandler} />
         <span className="slider round"></span>

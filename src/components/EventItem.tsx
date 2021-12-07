@@ -8,7 +8,7 @@ interface Props {
 
 const EventItem = ({ event }: Props) => {
   return (
-    <li className="EventItem">
+    <li className={`EventItem ${event.category}`}>
       <Link to={`/details/${encodeURIComponent(event!._id!)}`}>
         <p>{event.description}</p>
         {event.media && <img src={event.media} alt="user upload" />}

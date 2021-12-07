@@ -1,3 +1,39 @@
+.HomePage .filterButtons {
+  display: flex;
+  margin: 5px;
+}
+
+.HomePage button {
+  border-radius: 0;
+  border: none;
+  background-color: white;
+  color: #101935;
+  width: 100%;
+  border: 1px solid #101935;
+  padding: 10px 0px;
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+.HomePage button.lostButton {
+  background-color: #05832f;
+}
+.HomePage button.foundButton {
+  background-color: #7406a0;
+}
+.HomePage button.sightingButton {
+  background-color: #0518bb;
+}
+
+.HomePage button.selected {
+  font-weight: bolder;
+  font-size: large;
+  border: 1px solid red;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
