@@ -2,9 +2,7 @@ import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import EventsContext from "../context/EventsContext";
 import Event from "../models/Event";
-import { getEventById } from "../services/EventsService";
 import "./Details.css";
-import DisplayMap from "./DisplayMap";
 
 interface RouteParams {
   id: string;
@@ -12,8 +10,8 @@ interface RouteParams {
 
 const Details = () => {
   const { id } = useParams<RouteParams>();
-  const { filteredEvents } = useContext(EventsContext);
-  let foundEvent = filteredEvents.find((item: Event) => item._id === id);
+  const { events } = useContext(EventsContext);
+  let foundEvent = events.find((item: Event) => item._id === id);
 
   return (
     <div className="Details">

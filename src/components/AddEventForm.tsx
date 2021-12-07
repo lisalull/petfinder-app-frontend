@@ -7,7 +7,6 @@ import "./AddEventForm.css";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router";
 import AddProfileForm from "./AddProfileForm";
-import { checkProfile } from "../services/ProfilesService";
 import { addEvent } from "../services/EventsService";
 
 interface Props {
@@ -17,7 +16,8 @@ interface Props {
 
 const AddEventForm = ({ lat, lng }: Props) => {
   const { user, profile } = useContext(AuthContext);
-  const { setShowAddEventMapHandler } = useContext(EventsContext);
+  const { setShowAddEventMapHandler, getEventsHandler } =
+    useContext(EventsContext);
   const history = useHistory();
   const [category, setCategory] = useState("lost");
   const [type, setType] = useState("dog");
@@ -51,6 +51,7 @@ const AddEventForm = ({ lat, lng }: Props) => {
         getDownloadURL(snapshot.ref).then((response) => {
           newEvent.media = response;
           addEvent(newEvent).then((response) => {
+            getEventsHandler();
             setShowAddEventMapHandler();
             history.push(`/details/${encodeURIComponent(response._id!)}`);
           });
@@ -58,6 +59,7 @@ const AddEventForm = ({ lat, lng }: Props) => {
       });
     } else {
       addEvent(newEvent).then((response) => {
+        getEventsHandler();
         setShowAddEventMapHandler();
         history.push(`/details/${encodeURIComponent(response._id!)}`);
       });

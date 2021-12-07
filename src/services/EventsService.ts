@@ -1,6 +1,5 @@
 import axios from "axios";
 import Event from "../models/Event";
-import Param from "../models/Param";
 
 const baseURL: string = process.env.REACT_APP_API_URL || "";
 

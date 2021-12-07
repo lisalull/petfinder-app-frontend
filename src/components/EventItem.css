@@ -1,0 +1,8 @@
+.EventItem img {
+  width: 200px;
+}
+
+.EventItem {
+  text-decoration: none;
+  border: solid 5px;
+}

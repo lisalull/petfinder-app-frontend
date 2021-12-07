@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import Event from "../models/Event";
 import EventsContext from "./EventsContext";
 import { addEvent, getEvents } from "../services/EventsService";
+import Marker from "../models/Marker";
 
 interface Props {
   children: ReactNode;
@@ -14,6 +15,10 @@ const EventsContextProvider = ({ children }: Props) => {
   const [showAddEventMap, setShowAddEventMap] = useState<boolean>(false);
   const [categoryFilter, setCategoryFilter] = useState<string>("");
   const [typeFilter, setTypeFilter] = useState<string>("");
+  const [currentLocation, setCurrentLocation] = useState<Marker>({
+    lat: 42.278046,
+    lng: -83.73822,
+  });
 
   useEffect(() => {
     getEventsHandler();
@@ -88,17 +93,30 @@ const EventsContextProvider = ({ children }: Props) => {
     showDisplayMap ? setShowDisplayMap(false) : setShowDisplayMap(true);
   };
 
+  const getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition((response) => {
+      const coords = {
+        lat: response.coords.latitude,
+        lng: response.coords.longitude,
+      };
+      setCurrentLocation(coords);
+    });
+  };
+
   return (
     <EventsContext.Provider
       value={{
+        events,
         filteredEvents,
-        // addEventHandler,
+        getEventsHandler,
         getEventsByCategory,
         getEventsByType,
         showDisplayMap,
         setShowDisplayMapHandler,
         showAddEventMap,
         setShowAddEventMapHandler,
+        getCurrentLocation,
+        currentLocation,
       }}
     >
       {children}

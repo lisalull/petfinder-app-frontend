@@ -3,7 +3,6 @@ import "./Header.css";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
-import AddProfileForm from "./AddProfileForm";
 
 const Header = () => {
   const { user } = useContext(AuthContext);

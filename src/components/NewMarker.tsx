@@ -1,4 +1,3 @@
-import Marker from "../models/Marker";
 import AddEventForm from "./AddEventForm";
 import "./NewMarker.css";
 
