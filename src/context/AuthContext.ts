@@ -5,11 +5,13 @@ import Profile from "../models/Profile";
 export interface AuthContextModel {
   user: User | null; // null when not logged in
   profile: Profile | null;
+  setProfile: (profile: Profile) => void;
 }
 
 const defaultValue: AuthContextModel = {
   user: null,
   profile: null,
+  setProfile: () => {},
 };
 
 const AuthContext = createContext(defaultValue);

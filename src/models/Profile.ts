@@ -1,6 +1,6 @@
 export default interface Profile {
   _id?: string;
-  displayname: string;
+  displayName: string;
   phone: string;
   email: string;
   preferredContact: string;
