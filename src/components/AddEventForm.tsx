@@ -6,6 +6,9 @@ import { storage } from "../firebaseConfig";
 import "./AddEventForm.css";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router";
+import AddProfileForm from "./AddProfileForm";
+import { checkProfile } from "../services/ProfilesService";
+import { addEvent } from "../services/EventsService";
 
 interface Props {
   lat: number;
@@ -14,29 +17,31 @@ interface Props {
 
 const AddEventForm = ({ lat, lng }: Props) => {
   const { user, profile } = useContext(AuthContext);
+  const { setShowAddEventMapHandler } = useContext(EventsContext);
   const history = useHistory();
   const [category, setCategory] = useState("lost");
   const [type, setType] = useState("dog");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const { addEventHandler } = useContext(EventsContext);
+  const [name, setName] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: FormEvent) => {
-    // e.preventDefault();
+    e.preventDefault();
     let newEvent: Event = {
       date,
       description,
       category,
+      name,
       lat,
       lng,
       returned: false,
       uid: user!.uid,
       type,
-      displayName: "abcdef",
-      phoneNumber: "abcdef",
-      email: "abcdef",
-      preferedContact: "abcdef",
+      displayName: profile!.displayName,
+      phoneNumber: profile!.phone,
+      email: profile!.email,
+      preferedContact: profile!.preferredContact,
     };
     const files = fileInputRef.current?.files;
     if (files && files[0]) {
@@ -45,71 +50,100 @@ const AddEventForm = ({ lat, lng }: Props) => {
       uploadBytes(storageRef, file).then((snapshot) => {
         getDownloadURL(snapshot.ref).then((response) => {
           newEvent.media = response;
-          addEventHandler(newEvent);
+          addEvent(newEvent).then((response) => {
+            setShowAddEventMapHandler();
+            history.push(`/details/${encodeURIComponent(response._id!)}`);
+          });
         });
       });
     } else {
-      addEventHandler(newEvent);
+      addEvent(newEvent).then((response) => {
+        setShowAddEventMapHandler();
+        history.push(`/details/${encodeURIComponent(response._id!)}`);
+      });
     }
-    // history.push(`/details/${encodeURIComponent(newEvent._id!)}`, newEvent);
   };
 
   return (
-    <form className="AddEventForm" onSubmit={handleSubmit}>
-      <div className="category">
-        <input
-          type="radio"
-          name="category"
-          id="lost"
-          value="lost"
-          checked
-          onChange={(e) => console.log(e.target.value, e.target.checked)}
-        />
-        <label htmlFor="lost">Lost</label>
-        <input
-          type="radio"
-          name="category"
-          id="found"
-          value="found"
-          onChange={(e) => setCategory(e.target.value)}
-        />
-        <label htmlFor="found">Found</label>
-        <input
-          type="radio"
-          name="category"
-          id="sighting"
-          value="sighting"
-          onChange={(e) => setCategory(e.target.value)}
-        />
-        <label htmlFor="sighting">Sighting</label>
-      </div>
-      <label htmlFor="type">Type:</label>
-      <select name="type" id="type" onChange={(e) => setType(e.target.value)}>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="other">Other</option>
-      </select>
-      <label htmlFor="date">Date: </label>
-      <input
-        type="date"
-        name="date"
-        id="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
-      <label htmlFor="description">Description: </label>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <label htmlFor="uploadPicture">Upload Picture: </label>
-      <input ref={fileInputRef} type="file" />
+    <div className="AddEventForm">
+      {!user && <p> Sign in and create a profile to add</p>}
+      {user && !profile && (
+        <div>
+          <p> Add Profile to add an event </p> <AddProfileForm />
+        </div>
+      )}
+      {user && profile && (
+        <form onSubmit={handleSubmit}>
+          <div className="category">
+            <input
+              type="radio"
+              name="category"
+              id="lost"
+              value="lost"
+              checked
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label htmlFor="lost">Lost</label>
+            <input
+              type="radio"
+              name="category"
+              id="found"
+              value="found"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label htmlFor="found">Found</label>
+            <input
+              type="radio"
+              name="category"
+              id="sighting"
+              value="sighting"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label htmlFor="sighting">Sighting</label>
+          </div>
+          <label htmlFor="type">Type:</label>
+          <select
+            name="type"
+            id="type"
+            onChange={(e) => setType(e.target.value)}
+          >
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="other">Other</option>
+          </select>
+          <label htmlFor="name">Pet name (if known):</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="date">Date: </label>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            required
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <label htmlFor="description">Description: </label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            required
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <label htmlFor="uploadPicture">Upload Picture: </label>
+          <input ref={fileInputRef} type="file" />
 
-      <button>Submit</button>
-    </form>
+          <button>Submit</button>
+        </form>
+      )}
+    </div>
   );
 };
 

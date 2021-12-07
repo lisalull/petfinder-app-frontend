@@ -19,7 +19,6 @@ const Header = () => {
       {user ? (
         <div>
           <button onClick={signOut}>Sign out</button>
-          <AddProfileForm />
         </div>
       ) : (
         <button onClick={signInWithGoogle}>Sign in with Google</button>

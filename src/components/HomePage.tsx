@@ -20,9 +20,9 @@ const HomePage = () => {
   return (
     <div className="HomePage">
       <button onClick={() => getEventsByCategory("")}>All</button>
-      <button onClick={() => getEventsByCategory("Lost")}>Lost</button>
-      <button onClick={() => getEventsByCategory("Found")}>Found</button>
-      <button onClick={() => getEventsByCategory("Sightings")}>
+      <button onClick={() => getEventsByCategory("lost")}>Lost</button>
+      <button onClick={() => getEventsByCategory("found")}>Found</button>
+      <button onClick={() => getEventsByCategory("sightings")}>
         Sightings
       </button>
       <button onClick={() => getEventsByType("")}>All</button>

@@ -3,7 +3,7 @@ import Event from "../models/Event";
 
 interface EventsContextModel {
   filteredEvents: Event[];
-  addEventHandler: (event: Event) => void;
+  // addEventHandler: (event: Event) => void;
   getEventsByCategory: (category: string) => void;
   getEventsByType: (type: string) => void;
   showDisplayMap: boolean;
@@ -14,7 +14,7 @@ interface EventsContextModel {
 
 const defaultValues: EventsContextModel = {
   filteredEvents: [],
-  addEventHandler: () => {},
+  // addEventHandler: () => {},
   getEventsByCategory: () => {},
   getEventsByType: () => {},
   showDisplayMap: false,

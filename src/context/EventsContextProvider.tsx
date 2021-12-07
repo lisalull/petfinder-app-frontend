@@ -73,11 +73,11 @@ const EventsContextProvider = ({ children }: Props) => {
     }
   };
 
-  const addEventHandler = (event: Event): void => {
-    addEvent(event).then(() => {
-      getEventsHandler();
-    });
-  };
+  // const addEventHandler = (event: Event): void => {
+  //   addEvent(event).then(() => {
+  //     getEventsHandler();
+  //   });
+  // };
 
   const setShowAddEventMapHandler = () => {
     setShowDisplayMap(false);
@@ -92,7 +92,7 @@ const EventsContextProvider = ({ children }: Props) => {
     <EventsContext.Provider
       value={{
         filteredEvents,
-        addEventHandler,
+        // addEventHandler,
         getEventsByCategory,
         getEventsByType,
         showDisplayMap,

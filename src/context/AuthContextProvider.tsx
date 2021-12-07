@@ -26,10 +26,10 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
         setProfile(null);
       }
     });
-  }, [profile]);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, profile }}>
+    <AuthContext.Provider value={{ user, profile, setProfile }}>
       {children}
     </AuthContext.Provider>
   );
