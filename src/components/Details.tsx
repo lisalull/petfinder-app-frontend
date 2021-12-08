@@ -14,7 +14,7 @@ const Details = () => {
   const { id } = useParams<RouteParams>();
   const { events } = useContext(EventsContext);
   let foundEvent = events.find((item: Event) => item._id === id);
-  // const Mailto = require("react-mailto");
+  console.log(foundEvent);
   let history = useHistory();
   return (
     <div className="Details">
@@ -53,8 +53,10 @@ const Details = () => {
           <p>{foundEvent.description}</p>
         </div>
       )}
-      <p>Reported {foundEvent?.category} at this location.</p>
-      <DisplayMap />
+      <p className="lastSeen">
+        Reported {foundEvent?.category} at this location:
+      </p>
+      <DisplayMap lat={foundEvent?.lat!} lng={foundEvent?.lng!} />
       <button onClick={() => history.goBack()}>Back</button>
     </div>
   );

@@ -7,7 +7,7 @@ import "./AddEventForm.css";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router";
 import AddProfileForm from "./AddProfileForm";
-import { addEvent } from "../services/EventsService";
+import { addEvent, getEvents } from "../services/EventsService";
 
 interface Props {
   lat: number;
@@ -16,7 +16,7 @@ interface Props {
 
 const AddEventForm = ({ lat, lng }: Props) => {
   const { user, profile } = useContext(AuthContext);
-  const { setShowAddEventMapHandler, getEventsHandler } =
+  const { setShowAddEventMapHandler, getEventsHandler, setEvents } =
     useContext(EventsContext);
   const history = useHistory();
   const [showForm, setShowForm] = useState(true);
@@ -52,17 +52,21 @@ const AddEventForm = ({ lat, lng }: Props) => {
         getDownloadURL(snapshot.ref).then((response) => {
           newEvent.media = response;
           addEvent(newEvent).then((response) => {
-            getEventsHandler();
-            setShowAddEventMapHandler();
-            history.push(`/details/${encodeURIComponent(response._id!)}`);
+            getEvents().then((data) => {
+              setEvents(data);
+              setShowAddEventMapHandler();
+              history.push(`/details/${encodeURIComponent(response._id!)}`);
+            });
           });
         });
       });
     } else {
       addEvent(newEvent).then((response) => {
-        getEventsHandler();
-        setShowAddEventMapHandler();
-        history.push(`/details/${encodeURIComponent(response._id!)}`);
+        getEvents().then((data) => {
+          setEvents(data);
+          setShowAddEventMapHandler();
+          history.push(`/details/${encodeURIComponent(response._id!)}`);
+        });
       });
     }
   };
