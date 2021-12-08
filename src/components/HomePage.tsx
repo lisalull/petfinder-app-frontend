@@ -73,6 +73,7 @@ const HomePage = () => {
             >
               Dog
             </button>
+
             <button
               className={`${typeFilter === "other" ? "selected" : ""}`}
               onClick={() => getEventsByType("other")}
@@ -80,11 +81,14 @@ const HomePage = () => {
               Other
             </button>
           </div>
-          <label className="switch">
-            <input type="checkbox" onClick={setShowDisplayMapHandler} />
-            <span className="slider round"></span>
-          </label>
-          <button onClick={setShowAddEventMapHandler}>Add Event</button>
+          <div className="mapIcons">
+            <label className="switch">
+              <input type="checkbox" onClick={setShowDisplayMapHandler} />
+              <span className="slider round"></span>
+            </label>
+            <i className="fas fa-map-marked-alt fa-2x"></i>
+          </div>
+          <i className="fas fa-plus" onClick={setShowAddEventMapHandler}></i>
         </div>
       ) : (
         ""

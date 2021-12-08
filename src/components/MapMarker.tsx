@@ -8,10 +8,18 @@ interface Props {
   id: string;
   showIndex: number;
   index: number;
+  text: string;
   setShowIndex: (index: number) => void;
 }
 
-const MapMarker = ({ category, setShowIndex, showIndex, index, id }: Props) => {
+const MapMarker = ({
+  text,
+  category,
+  setShowIndex,
+  showIndex,
+  index,
+  id,
+}: Props) => {
   return (
     <div className="MapMarker">
       {showIndex !== index ? (
@@ -21,11 +29,12 @@ const MapMarker = ({ category, setShowIndex, showIndex, index, id }: Props) => {
         ></i>
       ) : (
         <div className="marker-popup-container">
-          <p>{category}</p>
+          <button onClick={() => setShowIndex(-1)}>X</button>
+
+          <p>{text}</p>
           <Link to={`/details/${encodeURIComponent(id)}`}>
             See more details
           </Link>
-          <button onClick={() => setShowIndex(-1)}>X</button>
         </div>
       )}
     </div>

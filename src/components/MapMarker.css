@@ -2,11 +2,32 @@
   height: 100px;
   width: 100px;
   background-color: white;
+  border: 1px solid #e5b0a4;
   border-radius: 5px;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .MapMarker {
   cursor: pointer;
+}
+
+.MapMarker button {
+  width: 25%;
+  border: none;
+  box-shadow: 1px 1px 1px black;
+  padding: 0;
+  position: absolute;
+  right: 2px;
+  top: 1px;
+}
+.fa-map-marker {
+  position: relative;
+  z-index: 1;
 }
 
 .fa-map-marker.lost {

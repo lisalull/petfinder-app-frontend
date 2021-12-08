@@ -33,6 +33,21 @@
   font-size: large;
   border: 1px solid red;
 }
+.fa-plus {
+  padding: 10px;
+  margin: 5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.HomePage .mapIcons {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  margin: 5px;
+}
 
 /* The switch - the box around the slider */
 .switch {
@@ -72,6 +87,10 @@
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+}
+
+.fa-map-marked-alt {
+  color: white;
 }
 
 input:checked + .slider {
