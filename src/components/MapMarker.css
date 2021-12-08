@@ -4,3 +4,19 @@
   background-color: white;
   border-radius: 5px;
 }
+
+.MapMarker {
+  cursor: pointer;
+}
+
+.fa-map-marker.lost {
+  color: #05832f;
+}
+
+.fa-map-marker.found {
+  color: #7406a0;
+}
+
+.fa-map-marker.sighting {
+  color: #0518bb;
+}

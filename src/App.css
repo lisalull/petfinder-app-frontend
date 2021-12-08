@@ -7,4 +7,9 @@ p {
 
 body {
   background-color: #e5b0a4;
+  font-family: "Sanchez", serif;
+}
+
+button {
+  font-family: "Sanchez", serif;
 }

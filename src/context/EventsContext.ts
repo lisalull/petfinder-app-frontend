@@ -16,6 +16,7 @@ interface EventsContextModel {
   showAddEventMap: boolean;
   setShowAddEventMapHandler: () => void;
   getCurrentLocation: () => void;
+  setCurrentLocation: (m: Marker) => void;
   currentLocation: Marker;
   getEventsHandler: () => void;
 }
@@ -33,6 +34,7 @@ const defaultValues: EventsContextModel = {
   showAddEventMap: false,
   setShowAddEventMapHandler: () => {},
   getCurrentLocation: () => {},
+  setCurrentLocation: () => {},
   currentLocation: { lat: 5, lng: 5 },
   getEventsHandler: () => {},
 };

@@ -22,6 +22,7 @@ const EventsContextProvider = ({ children }: Props) => {
 
   useEffect(() => {
     getEventsHandler();
+    getCurrentLocation();
   }, []);
 
   const getEventsHandler = (): void => {
@@ -119,6 +120,7 @@ const EventsContextProvider = ({ children }: Props) => {
         setShowAddEventMapHandler,
         getCurrentLocation,
         currentLocation,
+        setCurrentLocation,
       }}
     >
       {children}

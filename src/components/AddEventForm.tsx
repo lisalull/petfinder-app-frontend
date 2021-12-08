@@ -19,6 +19,7 @@ const AddEventForm = ({ lat, lng }: Props) => {
   const { setShowAddEventMapHandler, getEventsHandler } =
     useContext(EventsContext);
   const history = useHistory();
+  const [showForm, setShowForm] = useState(true);
   const [category, setCategory] = useState("lost");
   const [type, setType] = useState("dog");
   const [date, setDate] = useState("");
@@ -68,82 +69,91 @@ const AddEventForm = ({ lat, lng }: Props) => {
 
   return (
     <div className="AddEventForm">
-      {!user && <p> Sign in and create a profile to add</p>}
-      {user && !profile && (
-        <div>
-          <p> Add Profile to add an event </p> <AddProfileForm />
-        </div>
+      {showForm ? (
+        <button onClick={() => setShowForm(false)}>X</button>
+      ) : (
+        <button onClick={() => setShowForm(true)}>Click to See Form</button>
       )}
-      {user && profile && (
-        <form onSubmit={handleSubmit}>
-          <div className="category">
-            <input
-              type="radio"
-              name="category"
-              id="lost"
-              value="lost"
-              checked
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <label htmlFor="lost">Lost</label>
-            <input
-              type="radio"
-              name="category"
-              id="found"
-              value="found"
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <label htmlFor="found">Found</label>
-            <input
-              type="radio"
-              name="category"
-              id="sighting"
-              value="sighting"
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            <label htmlFor="sighting">Sighting</label>
-          </div>
-          <label htmlFor="type">Type:</label>
-          <select
-            name="type"
-            id="type"
-            onChange={(e) => setType(e.target.value)}
-          >
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="other">Other</option>
-          </select>
-          <label htmlFor="name">Pet name (if known):</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="date">Date: </label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            required
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-          <label htmlFor="description">Description: </label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            required
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <label htmlFor="uploadPicture">Upload Picture: </label>
-          <input ref={fileInputRef} type="file" />
+      {showForm && (
+        <div>
+          {!user && <p> Sign in and create a profile to add</p>}
+          {user && !profile && (
+            <div>
+              <p> Add Profile to add an event </p> <AddProfileForm />
+            </div>
+          )}
+          {user && profile && (
+            <form onSubmit={handleSubmit}>
+              <div className="category">
+                <input
+                  type="radio"
+                  name="category"
+                  id="lost"
+                  value="lost"
+                  checked
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label htmlFor="lost">Lost</label>
+                <input
+                  type="radio"
+                  name="category"
+                  id="found"
+                  value="found"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label htmlFor="found">Found</label>
+                <input
+                  type="radio"
+                  name="category"
+                  id="sighting"
+                  value="sighting"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label htmlFor="sighting">Sighting</label>
+              </div>
+              <label htmlFor="type">Type:</label>
+              <select
+                name="type"
+                id="type"
+                onChange={(e) => setType(e.target.value)}
+              >
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="other">Other</option>
+              </select>
+              <label htmlFor="name">Pet name (if known):</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label htmlFor="date">Date: </label>
+              <input
+                type="date"
+                name="date"
+                id="date"
+                required
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+              <label htmlFor="description">Description: </label>
+              <input
+                type="text"
+                name="description"
+                id="description"
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <label htmlFor="uploadPicture">Upload Picture: </label>
+              <input ref={fileInputRef} type="file" />
 
-          <button>Submit</button>
-        </form>
+              <button>Submit</button>
+            </form>
+          )}
+        </div>
       )}
     </div>
   );

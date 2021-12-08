@@ -8,17 +8,10 @@ import NewMarker from "./NewMarker";
 const key = process.env.REACT_APP_API_KEY || "";
 
 const AddEventMap = () => {
-  const { currentLocation, getCurrentLocation } = useContext(EventsContext);
-  getCurrentLocation();
+  const { currentLocation, getCurrentLocation, setShowAddEventMapHandler } =
+    useContext(EventsContext);
   const [marker, setMarker] = useState<Marker>();
   const [mapCenter, setMapCenter] = useState<Marker>(currentLocation);
-
-  // const onClickHandler = (e: GoogleMapReact.ClickEventValue) => {
-  //   if (e.event.target.parentNode.ariaLabel === "Map") {
-  //     setMarker({ lat: e.lat, lng: e.lng });
-  //     setMarkerCoordinates({ lat: e.lat, lng: e.lng });
-  //   }
-  // };
 
   const createMarker = (e: GoogleMapReact.ClickEventValue) => {
     if (e.event.target.parentNode.ariaLabel === "Map") {
@@ -33,6 +26,7 @@ const AddEventMap = () => {
 
   return (
     <div className="AddEventMap" style={{ height: "75vh", width: "100%" }}>
+      <button onClick={setShowAddEventMapHandler}>Close</button>
       <GoogleMapReact
         bootstrapURLKeys={{ key }}
         center={mapCenter}
