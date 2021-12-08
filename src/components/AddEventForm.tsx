@@ -16,8 +16,12 @@ interface Props {
 
 const AddEventForm = ({ lat, lng }: Props) => {
   const { user, profile } = useContext(AuthContext);
-  const { setShowAddEventMapHandler, getEventsHandler, setEvents } =
-    useContext(EventsContext);
+  const {
+    setShowAddEventMapHandler,
+    getEventsHandler,
+    setEvents,
+    setFilteredEvents,
+  } = useContext(EventsContext);
   const history = useHistory();
   const [showForm, setShowForm] = useState(true);
   const [category, setCategory] = useState("lost");
@@ -54,6 +58,7 @@ const AddEventForm = ({ lat, lng }: Props) => {
           addEvent(newEvent).then((response) => {
             getEvents().then((data) => {
               setEvents(data);
+              setFilteredEvents(data);
               setShowAddEventMapHandler();
               history.push(`/details/${encodeURIComponent(response._id!)}`);
             });
@@ -64,6 +69,7 @@ const AddEventForm = ({ lat, lng }: Props) => {
       addEvent(newEvent).then((response) => {
         getEvents().then((data) => {
           setEvents(data);
+          setFilteredEvents(data);
           setShowAddEventMapHandler();
           history.push(`/details/${encodeURIComponent(response._id!)}`);
         });

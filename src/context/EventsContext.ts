@@ -20,6 +20,7 @@ interface EventsContextModel {
   currentLocation: Marker;
   getEventsHandler: () => void;
   setEvents: (events: Event[]) => void;
+  setFilteredEvents: (events: Event[]) => void;
 }
 
 const defaultValues: EventsContextModel = {
@@ -39,6 +40,7 @@ const defaultValues: EventsContextModel = {
   currentLocation: { lat: 5, lng: 5 },
   getEventsHandler: () => {},
   setEvents: () => {},
+  setFilteredEvents: () => {},
 };
 
 const EventsContext = createContext(defaultValues);

@@ -122,6 +122,7 @@ const EventsContextProvider = ({ children }: Props) => {
         currentLocation,
         setCurrentLocation,
         setEvents,
+        setFilteredEvents,
       }}
     >
       {children}
