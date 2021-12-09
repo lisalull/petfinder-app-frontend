@@ -1,8 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory, useLocation } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 import EventsContext from "../context/EventsContext";
 import Event from "../models/Event";
+import { updateReturned } from "../services/EventsService";
 import "./Details.css";
 import DisplayMap from "./DisplayMap";
 
@@ -12,10 +14,20 @@ interface RouteParams {
 
 const Details = () => {
   const { id } = useParams<RouteParams>();
-  const { events } = useContext(EventsContext);
+  const { events, getEventsHandler } = useContext(EventsContext);
+  const { user } = useContext(AuthContext);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   let foundEvent = events.find((item: Event) => item._id === id);
   console.log(foundEvent);
-  let history = useHistory();
+  const history = useHistory();
+
+  const reunitedButtonHandler = () => {
+    updateReturned(id).then(() => {
+      getEventsHandler();
+      history.push("/");
+    });
+  };
+
   return (
     <div className="Details">
       {foundEvent?.category === "lost" && (
@@ -52,6 +64,18 @@ const Details = () => {
           <p>Seen on {foundEvent.date}</p>
           <p>{foundEvent.description}</p>
         </div>
+      )}
+      {user?.uid! === foundEvent?.uid && !showConfirmation && (
+        <button onClick={() => setShowConfirmation(true)}>Reunited!</button>
+      )}
+      {showConfirmation && (
+        <p className="confirmParagraph">
+          Yay!!! Confirm Reunited and{" "}
+          <span className="removeLink" onClick={reunitedButtonHandler}>
+            Remove
+          </span>{" "}
+          from List?
+        </p>
       )}
       <p className="lastSeen">
         Reported {foundEvent?.category} at this location:

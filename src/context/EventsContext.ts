@@ -21,6 +21,7 @@ interface EventsContextModel {
   getEventsHandler: () => void;
   setEvents: (events: Event[]) => void;
   setFilteredEvents: (events: Event[]) => void;
+  // setReturned: (events: Event[]) => void;
 }
 
 const defaultValues: EventsContextModel = {
@@ -41,6 +42,7 @@ const defaultValues: EventsContextModel = {
   getEventsHandler: () => {},
   setEvents: () => {},
   setFilteredEvents: () => {},
+  // setReturned: () => {},
 };
 
 const EventsContext = createContext(defaultValues);

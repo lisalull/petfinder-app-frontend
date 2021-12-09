@@ -32,7 +32,7 @@ const DisplayMap = ({ lat, lng }: Props) => {
       style={
         detailsPage
           ? { height: "500px", width: "500px" }
-          : { height: "75vh", width: "100%" }
+          : { height: "70vh", width: "100%" }
       }
     >
       {!detailsPage && <SearchByCity />}

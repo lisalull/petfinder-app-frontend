@@ -80,7 +80,9 @@ const AddEventForm = ({ lat, lng }: Props) => {
   return (
     <div className="AddEventForm">
       {showForm ? (
-        <button onClick={() => setShowForm(false)}>X</button>
+        <button className="closeButton" onClick={() => setShowForm(false)}>
+          X
+        </button>
       ) : (
         <button onClick={() => setShowForm(true)}>Click to See Form</button>
       )}
@@ -94,13 +96,13 @@ const AddEventForm = ({ lat, lng }: Props) => {
           )}
           {user && profile && (
             <form onSubmit={handleSubmit}>
-              <div className="category">
+              <div className="field category">
                 <input
                   type="radio"
                   name="category"
                   id="lost"
                   value="lost"
-                  checked
+                  defaultChecked
                   onChange={(e) => setCategory(e.target.value)}
                 />
                 <label htmlFor="lost">Lost</label>
@@ -121,44 +123,54 @@ const AddEventForm = ({ lat, lng }: Props) => {
                 />
                 <label htmlFor="sighting">Sighting</label>
               </div>
-              <label htmlFor="type">Type:</label>
-              <select
-                name="type"
-                id="type"
-                onChange={(e) => setType(e.target.value)}
-              >
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="other">Other</option>
-              </select>
-              <label htmlFor="name">Pet name (if known):</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <label htmlFor="date">Date: </label>
-              <input
-                type="date"
-                name="date"
-                id="date"
-                required
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-              <label htmlFor="description">Description: </label>
-              <input
-                type="text"
-                name="description"
-                id="description"
-                required
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              <label htmlFor="uploadPicture">Upload Picture: </label>
-              <input ref={fileInputRef} type="file" />
+              <div className="field">
+                <label htmlFor="type">Type: </label>
+                <select
+                  name="type"
+                  id="type"
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div className="field">
+                <label htmlFor="name">Pet name (if known): </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="date">Date: </label>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  required
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="description">Description: </label>
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  required
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="uploadPicture">Upload Picture: </label>
+                <input ref={fileInputRef} type="file" />
+              </div>
 
               <button>Submit</button>
             </form>

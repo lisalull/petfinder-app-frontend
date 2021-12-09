@@ -1,5 +1,24 @@
 .AddEventForm {
-  background-color: rgba(187, 23, 23, 0.8);
+  background-color: rgba(192, 55, 55, 0.8);
   width: 200px;
   padding: 5px;
+  position: relative;
+}
+
+.AddEventForm input {
+  padding: 3px;
+}
+
+.AddEventForm .field {
+  margin: 3px;
+}
+
+.AddEventForm .closeButton {
+  width: 15%;
+  height: 20px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  text-align: center;
+  padding: 2px;
 }

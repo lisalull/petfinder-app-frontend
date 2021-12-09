@@ -15,8 +15,14 @@ export const addEvent = (event: Event): Promise<Event> => {
     .then((response) => response.data);
 };
 
-export const getEventById = (_id: string): Promise<Event> => {
+// export const getEventById = (_id: string): Promise<Event> => {
+//   return axios
+//     .get(`${baseURL}/details/${encodeURIComponent(_id!)}`)
+//     .then((response) => response.data);
+// };
+
+export const updateReturned = (id: string): Promise<void> => {
   return axios
-    .get(`${baseURL}/details/${encodeURIComponent(_id!)}`)
+    .put(`${baseURL}/events/${encodeURIComponent(id)}`)
     .then((response) => response.data);
 };

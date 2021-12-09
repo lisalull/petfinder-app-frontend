@@ -14,3 +14,15 @@
   align-items: center;
   text-align: center;
 }
+
+.Details .confirmParagraph {
+  margin: 10px;
+  padding: 5px;
+  border: 2px solid white;
+}
+
+.Details .removeLink {
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}

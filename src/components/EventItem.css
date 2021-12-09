@@ -1,12 +1,12 @@
 .EventItem {
   list-style: none;
-  width: 80vw;
-  margin: 20px 0;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: rgb(235, 231, 231);
+  margin: 10px;
 }
 
 .EventItem img {

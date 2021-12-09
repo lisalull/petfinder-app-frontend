@@ -25,7 +25,7 @@ const AddEventMap = () => {
   };
 
   return (
-    <div className="AddEventMap" style={{ height: "75vh", width: "100%" }}>
+    <div className="AddEventMap" style={{ height: "79vh", width: "100%" }}>
       <button onClick={setShowAddEventMapHandler}>Close</button>
       <GoogleMapReact
         bootstrapURLKeys={{ key }}

@@ -11,6 +11,7 @@ interface Props {
 const EventsContextProvider = ({ children }: Props) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
+  // const [returned, setReturned] = useState<Event[]>([]);
   const [showDisplayMap, setShowDisplayMap] = useState<boolean>(false);
   const [showAddEventMap, setShowAddEventMap] = useState<boolean>(false);
   const [categoryFilter, setCategoryFilter] = useState<string>("");
@@ -123,6 +124,7 @@ const EventsContextProvider = ({ children }: Props) => {
         setCurrentLocation,
         setEvents,
         setFilteredEvents,
+        // setReturned,
       }}
     >
       {children}
