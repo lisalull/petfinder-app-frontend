@@ -24,37 +24,44 @@ const AddProfileForm = () => {
   };
   return (
     <form className="AddProfileForm" onSubmit={handleSubmit}>
-      <label htmlFor="displayName">Username:</label>
-      <input
-        type="text"
-        name="displayName"
-        id="displayName"
-        value={displayName}
-        onChange={(e) => setDisplayName(e.target.value)}
-      />
-      <label htmlFor="phone">Phone number:</label>
-      <input
-        type="text"
-        name="phone"
-        id="phone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-      />
-      <label htmlFor="email">Email:</label>
-      <input
-        type="text"
-        name="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <div>
+      <div className="field">
+        <label htmlFor="displayName">Username: </label>
+        <input
+          type="text"
+          name="displayName"
+          id="displayName"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+        />
+      </div>
+      <div className="field">
+        <label htmlFor="phone">Phone number: </label>
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+      </div>
+      <div className="field">
+        <label htmlFor="email">Email: </label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div className="field">
+        <label htmlFor="preferredContact">Preferred Contact: </label>
         <input
           type="radio"
           name="preferredContact"
           id="call"
           value="call"
-          checked
+          defaultChecked
           onChange={(e) => setPreferredContact(e.target.value)}
         />
         <label htmlFor="call">Call</label>

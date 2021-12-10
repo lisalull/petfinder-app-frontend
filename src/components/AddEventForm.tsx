@@ -8,6 +8,7 @@ import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router";
 import AddProfileForm from "./AddProfileForm";
 import { addEvent, getEvents } from "../services/EventsService";
+import CategoryForm from "./CategoryForm";
 
 interface Props {
   lat: number;
@@ -24,7 +25,7 @@ const AddEventForm = ({ lat, lng }: Props) => {
   } = useContext(EventsContext);
   const history = useHistory();
   const [showForm, setShowForm] = useState(true);
-  const [category, setCategory] = useState("lost");
+  const [category, setCategory] = useState("");
   const [type, setType] = useState("dog");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
@@ -88,41 +89,17 @@ const AddEventForm = ({ lat, lng }: Props) => {
       )}
       {showForm && (
         <div>
-          {!user && <p> Sign in and create a profile to add</p>}
+          {!user && (
+            <p className="signIn"> Sign in and create a profile to add</p>
+          )}
           {user && !profile && (
             <div>
               <p> Add Profile to add an event </p> <AddProfileForm />
             </div>
           )}
-          {user && profile && (
+
+          {user && profile && category ? (
             <form onSubmit={handleSubmit}>
-              <div className="field category">
-                <input
-                  type="radio"
-                  name="category"
-                  id="lost"
-                  value="lost"
-                  defaultChecked
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="lost">Lost</label>
-                <input
-                  type="radio"
-                  name="category"
-                  id="found"
-                  value="found"
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="found">Found</label>
-                <input
-                  type="radio"
-                  name="category"
-                  id="sighting"
-                  value="sighting"
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-                <label htmlFor="sighting">Sighting</label>
-              </div>
               <div className="field">
                 <label htmlFor="type">Type: </label>
                 <select
@@ -174,6 +151,8 @@ const AddEventForm = ({ lat, lng }: Props) => {
 
               <button>Submit</button>
             </form>
+          ) : (
+            <CategoryForm setCategory={setCategory} />
           )}
         </div>
       )}

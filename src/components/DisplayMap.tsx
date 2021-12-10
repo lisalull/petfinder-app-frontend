@@ -31,7 +31,7 @@ const DisplayMap = ({ lat, lng }: Props) => {
       className="DisplayMap"
       style={
         detailsPage
-          ? { height: "500px", width: "500px" }
+          ? { height: "400px", width: "400px" }
           : { height: "70vh", width: "100%" }
       }
     >

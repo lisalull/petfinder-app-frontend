@@ -24,7 +24,7 @@ const MapMarker = ({
     <div className="MapMarker">
       {showIndex !== index ? (
         <i
-          className={`fas fa-map-marker ${category}`}
+          className={`fas fa-map-marker fa-2x ${category}`}
           onClick={() => setShowIndex(index)}
         ></i>
       ) : (

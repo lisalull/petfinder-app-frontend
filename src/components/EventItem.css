@@ -14,11 +14,25 @@
 }
 
 .EventItem.lost {
-  border: solid 5px #05832f;
+  border: solid 5px #ef476f;
 }
 .EventItem.found {
-  border: solid 5px #7406a0;
+  border: solid 5px #06d6a0;
 }
 .EventItem.sighting {
-  border: solid 5px #0518bb;
+  border: solid 5px black;
+}
+
+@media only screen and (min-width: 768px) {
+  .EventItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .EventItem p {
+    margin: 0 10px;
+  }
+  .EventItem .details {
+    white-space: nowrap;
+  }
 }

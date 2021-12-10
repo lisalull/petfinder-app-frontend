@@ -1,0 +1,17 @@
+.AddProfileForm {
+  background-color: rgba(192, 55, 55);
+  position: fixed;
+  top: 50%;
+  left: 10%;
+  z-index: 5;
+  transform: translate(-65%, -50%);
+  width: 60vw;
+
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.AddProfileForm .field {
+  margin: 10px;
+}

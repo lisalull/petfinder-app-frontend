@@ -19,13 +19,13 @@
 }
 
 .HomePage button.lostButton {
-  background-color: #49815c;
+  background-color: #ef476f;
 }
 .HomePage button.foundButton {
-  background-color: #8538a3;
+  background-color: #06d6a0;
 }
 .HomePage button.sightingButton {
-  background-color: #5962b4;
+  background-color: white;
 }
 
 .HomePage button.selected {

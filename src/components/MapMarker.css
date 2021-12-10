@@ -31,13 +31,13 @@
 }
 
 .fa-map-marker.lost {
-  color: #05832f;
+  color: #ef476f;
 }
 
 .fa-map-marker.found {
-  color: #7406a0;
+  color: #06d6a0;
 }
 
 .fa-map-marker.sighting {
-  color: #0518bb;
+  color: black;
 }

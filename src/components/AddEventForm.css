@@ -1,8 +1,13 @@
 .AddEventForm {
   background-color: rgba(192, 55, 55, 0.8);
-  width: 200px;
+  width: fit-content;
   padding: 5px;
   position: relative;
+}
+
+.AddEventForm .signIn {
+  font-size: 20px;
+  white-space: nowrap;
 }
 
 .AddEventForm input {
