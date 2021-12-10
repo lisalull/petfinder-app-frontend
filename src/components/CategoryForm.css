@@ -1,0 +1,10 @@
+.CategoryForm {
+  width: fit-content;
+  font-size: 16px;
+  position: absolute;
+  bottom: 0;
+}
+
+.CategoryForm label {
+  white-space: nowrap;
+}

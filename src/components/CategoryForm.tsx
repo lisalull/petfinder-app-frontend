@@ -15,31 +15,37 @@ const CategoryForm = ({ setCategory }: Props) => {
   return (
     <form className="CategoryForm" onSubmit={categorySubmitHandler}>
       <div className="field category">
-        <input
-          type="radio"
-          name="category"
-          id="lost"
-          value="lost"
-          defaultChecked
-          onChange={(e) => setCat(e.target.value)}
-        />
-        <label htmlFor="lost">Lost</label>
-        <input
-          type="radio"
-          name="category"
-          id="found"
-          value="found"
-          onChange={(e) => setCat(e.target.value)}
-        />
-        <label htmlFor="found">Found</label>
-        <input
-          type="radio"
-          name="category"
-          id="sighting"
-          value="sighting"
-          onChange={(e) => setCat(e.target.value)}
-        />
-        <label htmlFor="sighting">Sighting</label>
+        <div>
+          <input
+            type="radio"
+            name="category"
+            id="lost"
+            value="lost"
+            defaultChecked
+            onChange={(e) => setCat(e.target.value)}
+          />
+          <label htmlFor="lost">Lost (Lost Your Pet?)</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="category"
+            id="found"
+            value="found"
+            onChange={(e) => setCat(e.target.value)}
+          />
+          <label htmlFor="found">Found (Find A Lost Pet?)</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="category"
+            id="sighting"
+            value="sighting"
+            onChange={(e) => setCat(e.target.value)}
+          />
+          <label htmlFor="sighting">Sighting (See A Lost Animal?)</label>
+        </div>
       </div>
       <button>Submit</button>
     </form>
