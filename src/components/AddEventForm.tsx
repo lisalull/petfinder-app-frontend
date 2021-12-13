@@ -6,9 +6,7 @@ import { storage } from "../firebaseConfig";
 import "./AddEventForm.css";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router";
-import AddProfileForm from "./AddProfileForm";
 import { addEvent, getEvents } from "../services/EventsService";
-import CategoryForm from "./CategoryForm";
 
 interface Props {
   lat: number;
@@ -23,8 +21,6 @@ const AddEventForm = ({ lat, lng, showForm, setShowForm, category }: Props) => {
   const { setShowAddEventMapHandler, setEvents, setFilteredEvents } =
     useContext(EventsContext);
   const history = useHistory();
-  // const [showForm, setShowForm] = useState(true);
-  // const [category, setCategory] = useState("");
   const [type, setType] = useState("dog");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
@@ -79,7 +75,6 @@ const AddEventForm = ({ lat, lng, showForm, setShowForm, category }: Props) => {
 
   return (
     <div className="AddEventForm">
-      {/* <div className="parentHelper"> */}
       {showForm ? (
         <button className="closeButton" onClick={() => setShowForm(false)}>
           X
@@ -87,17 +82,6 @@ const AddEventForm = ({ lat, lng, showForm, setShowForm, category }: Props) => {
       ) : (
         <button onClick={() => setShowForm(true)}>Click to See Form</button>
       )}
-      {/* {showForm && (
-        <div>
-          {!user && (
-            <p className="signIn"> Sign in and create a profile to add</p>
-          )}
-          {user && !profile && <AddProfileForm />}
-
-          {user && profile && !category && (
-            <CategoryForm setCategory={setCategory} />
-          )}
-          {user && profile && category && ( */}
       {showForm && (
         <form onSubmit={handleSubmit} className="eventForm">
           <div className="field">
@@ -153,10 +137,6 @@ const AddEventForm = ({ lat, lng, showForm, setShowForm, category }: Props) => {
           <button>Submit</button>
         </form>
       )}
-      {/* )}
-        </div>
-        )}
-      </div> */}
     </div>
   );
 };

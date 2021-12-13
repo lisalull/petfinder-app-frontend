@@ -12,17 +12,6 @@
   font-size: 20px;
 }
 
-.AddEventForm .parentHelper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.AddEventForm .signIn {
-  font-size: 20px;
-  white-space: nowrap;
-}
-
 .AddEventForm input {
   padding: 3px;
 }
@@ -54,7 +43,7 @@
     flex-wrap: wrap;
   }
 
-  .AddEventForm {
-    /* height: 40vh; */
-  }
+  /* .AddEventForm {
+    height: 40vh;
+  } */
 }

@@ -12,7 +12,6 @@ const NewMarker = ({ lat, lng }: Props) => {
     <div className="NewMarker">
       <i className="fas fa-map-marker"></i>
       <FormContainer lat={lat} lng={lng} />
-      {/* <AddEventForm lat={lat} lng={lng} /> */}
     </div>
   );
 };

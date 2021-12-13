@@ -13,30 +13,17 @@ interface Props {
 const FormContainer = ({ lat, lng }: Props) => {
   const [showForm, setShowForm] = useState(true);
   const { user, profile } = useContext(AuthContext);
-  //   const [user, setUser] = useState(false);
-  //   const [profile, setProfile] = useState(false);
   const [category, setCategory] = useState("");
-  //   console.log(`user: ${user}`, `profile: ${profile}`, `category: ${category}`);
+
   return (
     <div className="FormContainer">
-      {/* {showForm ? (
-        <button className="closeButton" onClick={() => setShowForm(false)}>
-          X
-        </button>
-      ) : (
-        <button onClick={() => setShowForm(true)}>Click to See Form</button>
-      )} */}
       {showForm && !user && (
         <div>
           <p className="signIn"> Sign in and create a profile to add</p>
         </div>
       )}
       {user && !profile && (
-        <AddProfileForm
-          // setProfile={setProfile}
-          showForm={showForm}
-          setShowForm={setShowForm}
-        />
+        <AddProfileForm showForm={showForm} setShowForm={setShowForm} />
       )}
       {user && profile && !category && (
         <CategoryForm
