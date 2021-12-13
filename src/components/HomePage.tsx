@@ -81,14 +81,16 @@ const HomePage = () => {
               Other
             </button>
           </div>
-          <div className="mapIcons">
-            <label className="switch">
-              <input type="checkbox" onClick={setShowDisplayMapHandler} />
-              <span className="slider round"></span>
-            </label>
-            <i className="fas fa-map-marked-alt fa-2x"></i>
+          <div className="buttons">
+            <div className="mapIcons">
+              <label className="switch">
+                <input type="checkbox" onClick={setShowDisplayMapHandler} />
+                <span className="slider round"></span>
+              </label>
+              <i className="fas fa-map-marked-alt fa-2x"></i>
+            </div>
+            <i className="fas fa-plus" onClick={setShowAddEventMapHandler}></i>
           </div>
-          <i className="fas fa-plus" onClick={setShowAddEventMapHandler}></i>
         </div>
       ) : (
         ""

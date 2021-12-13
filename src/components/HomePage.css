@@ -33,6 +33,13 @@
   font-size: large;
   border: 1px solid red;
 }
+
+.HomePage .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .fa-plus {
   padding: 10px;
   margin: 5px;
@@ -44,8 +51,8 @@
 .HomePage .mapIcons {
   display: flex;
   align-items: center;
-  position: absolute;
-  right: 0;
+  /* position: absolute;
+  right: 0; */
   margin: 5px;
 }
 

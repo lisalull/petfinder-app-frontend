@@ -26,7 +26,7 @@ const SearchByCity = () => {
   return (
     <div className="SearchByCity">
       <form onSubmit={submitCityHandler}>
-        <label htmlFor="city">City</label>
+        <label htmlFor="city">Search by address, city, or zip code: </label>
         <input
           type="text"
           name="city"
@@ -34,7 +34,9 @@ const SearchByCity = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button>Search</button>
+        <button>
+          <i className="fas fa-search-location fa-2x"></i>
+        </button>
       </form>
     </div>
   );

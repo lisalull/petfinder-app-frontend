@@ -10,7 +10,7 @@ interface Props {
 const NewMarker = ({ lat, lng }: Props) => {
   return (
     <div className="NewMarker">
-      <i className="fas fa-map-marker"></i>
+      <i className="fas fa-map-marker fa-2x"></i>
       <FormContainer lat={lat} lng={lng} />
     </div>
   );

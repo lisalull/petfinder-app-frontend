@@ -20,7 +20,7 @@ const Header = () => {
           <button onClick={signOut}>Sign out</button>
         </div>
       ) : (
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <button onClick={signInWithGoogle}>Sign in</button>
       )}
     </header>
   );

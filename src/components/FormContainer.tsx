@@ -4,6 +4,7 @@ import CategoryForm from "./CategoryForm";
 import AddEventForm from "./AddEventForm";
 import "./FormContainer.css";
 import AuthContext from "../context/AuthContext";
+import { signInWithGoogle } from "../firebaseConfig";
 
 interface Props {
   lat: number;
@@ -19,7 +20,12 @@ const FormContainer = ({ lat, lng }: Props) => {
     <div className="FormContainer">
       {showForm && !user && (
         <div>
-          <p className="signIn"> Sign in and create a profile to add</p>
+          <p className="signIn">
+            <span className="googleSignIn" onClick={signInWithGoogle}>
+              Sign in
+            </span>{" "}
+            and create a profile to add
+          </p>
         </div>
       )}
       {user && !profile && (

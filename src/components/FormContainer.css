@@ -11,6 +11,11 @@
   padding: 5px;
 }
 
+.FormContainer .googleSignIn {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* .FormContainer .closeButton {
   width: 10%;
   height: 20px;

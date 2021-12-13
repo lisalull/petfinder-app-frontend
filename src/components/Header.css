@@ -9,6 +9,7 @@
 
 .Header h1 {
   color: white;
+  margin-top: 20px;
 }
 
 .Header .link {
@@ -22,8 +23,15 @@
   justify-content: space-between;
 }
 
+.Header .fa-paw {
+  color: white;
+}
+
 .Header button {
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   margin: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
