@@ -3,10 +3,8 @@ import GoogleMapReact from "google-map-react";
 import MapMarker from "./MapMarker";
 import { useContext, useState } from "react";
 import EventsContext from "../context/EventsContext";
-import { useLocation, useParams } from "react-router";
-import Event from "../models/Event";
+import { useParams } from "react-router";
 import SearchByCity from "./SearchByCity";
-import { Marker } from "@react-google-maps/api";
 
 const key = process.env.REACT_APP_API_KEY || "";
 
@@ -20,8 +18,7 @@ interface Props {
 }
 
 const DisplayMap = ({ lat, lng }: Props) => {
-  const { filteredEvents, currentLocation, setCurrentLocation, events } =
-    useContext(EventsContext);
+  const { filteredEvents, currentLocation } = useContext(EventsContext);
   const [showIndex, setShowIndex] = useState(-1);
   const id: string = useParams<RouteParams>().id;
   const detailsPage: boolean = id ? true : false;

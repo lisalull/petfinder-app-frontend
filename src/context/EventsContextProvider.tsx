@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import Event from "../models/Event";
 import EventsContext from "./EventsContext";
-import { addEvent, getEvents } from "../services/EventsService";
+import { getEvents } from "../services/EventsService";
 import Marker from "../models/Marker";
 
 interface Props {

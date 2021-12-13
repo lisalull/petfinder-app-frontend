@@ -13,19 +13,18 @@ import CategoryForm from "./CategoryForm";
 interface Props {
   lat: number;
   lng: number;
+  showForm: boolean;
+  setShowForm: (b: boolean) => void;
+  category: string;
 }
 
-const AddEventForm = ({ lat, lng }: Props) => {
+const AddEventForm = ({ lat, lng, showForm, setShowForm, category }: Props) => {
   const { user, profile } = useContext(AuthContext);
-  const {
-    setShowAddEventMapHandler,
-    getEventsHandler,
-    setEvents,
-    setFilteredEvents,
-  } = useContext(EventsContext);
+  const { setShowAddEventMapHandler, setEvents, setFilteredEvents } =
+    useContext(EventsContext);
   const history = useHistory();
-  const [showForm, setShowForm] = useState(true);
-  const [category, setCategory] = useState("");
+  // const [showForm, setShowForm] = useState(true);
+  // const [category, setCategory] = useState("");
   const [type, setType] = useState("dog");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
@@ -80,82 +79,84 @@ const AddEventForm = ({ lat, lng }: Props) => {
 
   return (
     <div className="AddEventForm">
-      <div className="parentHelper">
-        {showForm ? (
-          <button className="closeButton" onClick={() => setShowForm(false)}>
-            X
-          </button>
-        ) : (
-          <button onClick={() => setShowForm(true)}>Click to See Form</button>
-        )}
-        {showForm && (
-          <div>
-            {!user && (
-              <p className="signIn"> Sign in and create a profile to add</p>
-            )}
-            {user && !profile && <AddProfileForm />}
+      {/* <div className="parentHelper"> */}
+      {showForm ? (
+        <button className="closeButton" onClick={() => setShowForm(false)}>
+          X
+        </button>
+      ) : (
+        <button onClick={() => setShowForm(true)}>Click to See Form</button>
+      )}
+      {/* {showForm && (
+        <div>
+          {!user && (
+            <p className="signIn"> Sign in and create a profile to add</p>
+          )}
+          {user && !profile && <AddProfileForm />}
 
-            {user && profile && !category && (
-              <CategoryForm setCategory={setCategory} />
-            )}
-            {user && profile && category && (
-              <form onSubmit={handleSubmit} className="eventForm">
-                <div className="field">
-                  <label htmlFor="type">Type: </label>
-                  <select
-                    name="type"
-                    id="type"
-                    onChange={(e) => setType(e.target.value)}
-                  >
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div className="field">
-                  <label htmlFor="name">Pet name (if known): </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="date">Date: </label>
-                  <input
-                    type="date"
-                    name="date"
-                    id="date"
-                    required
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="description">Description: </label>
-                  <textarea
-                    rows={4}
-                    cols={25}
-                    name="description"
-                    id="description"
-                    required
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                </div>
-                <div className="field">
-                  <label htmlFor="uploadPicture">Upload Picture: </label>
-                  <input ref={fileInputRef} type="file" />
-                </div>
-
-                <button>Submit</button>
-              </form>
-            )}
+          {user && profile && !category && (
+            <CategoryForm setCategory={setCategory} />
+          )}
+          {user && profile && category && ( */}
+      {showForm && (
+        <form onSubmit={handleSubmit} className="eventForm">
+          <div className="field">
+            <label htmlFor="type">Type: </label>
+            <select
+              name="type"
+              id="type"
+              onChange={(e) => setType(e.target.value)}
+            >
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="other">Other</option>
+            </select>
           </div>
+          <div className="field">
+            <label htmlFor="name">Pet name (if known): </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="date">Date: </label>
+            <input
+              type="date"
+              name="date"
+              id="date"
+              required
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="description">Description: </label>
+            <textarea
+              rows={4}
+              cols={25}
+              name="description"
+              id="description"
+              required
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="uploadPicture">Upload Picture: </label>
+            <input ref={fileInputRef} type="file" />
+          </div>
+
+          <button>Submit</button>
+        </form>
+      )}
+      {/* )}
+        </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,10 +1,24 @@
 .CategoryForm {
-  width: fit-content;
-  font-size: 16px;
-  position: absolute;
-  bottom: 0;
+  width: 35vw;
+  background-color: #ffd166;
+  font-size: 14px;
 }
 
-.CategoryForm label {
-  white-space: nowrap;
+.CategoryForm .closeButton {
+  width: 10%;
+  height: 20px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  text-align: center;
+  padding: 2px;
 }
+
+.CategoryForm .title {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+/* .CategoryForm label {
+  white-space: nowrap;
+} */
