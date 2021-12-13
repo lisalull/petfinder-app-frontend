@@ -26,3 +26,15 @@ export const updateReturned = (id: string): Promise<void> => {
     .put(`${baseURL}/events/${encodeURIComponent(id)}`)
     .then((response) => response.data);
 };
+
+export const linkSightedEvent = (
+  id: string,
+  newEvent: Event
+): Promise<void> => {
+  return axios
+    .put(`${baseURL}/events/link-sighting/${encodeURIComponent(id)}`, newEvent)
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
+};

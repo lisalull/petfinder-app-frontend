@@ -4,9 +4,10 @@ import { useHistory } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import EventsContext from "../context/EventsContext";
 import Event from "../models/Event";
-import { updateReturned } from "../services/EventsService";
+import { linkSightedEvent, updateReturned } from "../services/EventsService";
 import "./Details.css";
 import DisplayMap from "./DisplayMap";
+import LostPetsList from "./LostPetsList";
 
 interface RouteParams {
   id: string;
@@ -17,6 +18,7 @@ const Details = () => {
   const { events, getEventsHandler } = useContext(EventsContext);
   const { user } = useContext(AuthContext);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showList, setShowList] = useState(false);
   let foundEvent = events.find((item: Event) => item._id === id);
   console.log(foundEvent);
   const history = useHistory();
@@ -26,6 +28,21 @@ const Details = () => {
       getEventsHandler();
       history.push("/");
     });
+  };
+
+  const linkSightingHandler = (event: Event): void => {
+    const id = event._id;
+    const newEvent: Event = event;
+    if (!newEvent.sightings) {
+      newEvent.sightings = [];
+    }
+    newEvent.sightings.push({
+      lat: foundEvent?.lat!,
+      lng: foundEvent?.lng!,
+      date: foundEvent?.date!,
+      description: foundEvent?.description!,
+    });
+    linkSightedEvent(id!, newEvent);
   };
 
   return (
@@ -73,6 +90,11 @@ const Details = () => {
             )}
             <p>Seen on {foundEvent.date}</p>
             <p>{foundEvent.description}</p>
+
+            <button onClick={() => setShowList(true)}>Link to lost pet.</button>
+            {showList && (
+              <LostPetsList linkSightingHandler={linkSightingHandler} />
+            )}
           </div>
         )}
         {user?.uid! === foundEvent?.uid && !showConfirmation && (
