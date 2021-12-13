@@ -43,6 +43,7 @@ const Details = () => {
       description: foundEvent?.description!,
     });
     linkSightedEvent(id!, newEvent);
+    history.push(`/details/${encodeURIComponent(newEvent._id!)}`);
   };
 
   return (
@@ -64,6 +65,21 @@ const Details = () => {
             <p>Email: {foundEvent.email}</p>
             <p>Phone: {foundEvent.phoneNumber}</p>
             <p>Preferred Contact Method: {foundEvent.preferedContact}</p>
+
+            {foundEvent?.sightings && (
+              <div>
+                <h1>Known Sightings: </h1>
+                {foundEvent.sightings.map((sighting) => {
+                  return (
+                    <div>
+                      <p>Sighting Date: {sighting.date}</p>
+                      <p>Sighting Description: {sighting.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
             {/* <Mailto email={foundEvent.email} obfuscate={true}>
             Email my pawrents!
           </Mailto>*/}

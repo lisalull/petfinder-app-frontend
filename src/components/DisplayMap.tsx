@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import EventsContext from "../context/EventsContext";
 import { useParams } from "react-router";
 import SearchByCity from "./SearchByCity";
+import Event from "../models/Event";
 
 const key = process.env.REACT_APP_API_KEY || "";
 
@@ -18,10 +19,14 @@ interface Props {
 }
 
 const DisplayMap = ({ lat, lng }: Props) => {
-  const { filteredEvents, currentLocation } = useContext(EventsContext);
+  const { filteredEvents, currentLocation, events } = useContext(EventsContext);
   const [showIndex, setShowIndex] = useState(-1);
   const id: string = useParams<RouteParams>().id;
   const detailsPage: boolean = id ? true : false;
+
+  const detailedEvent: Event | undefined = events.find(
+    (item) => item._id === id
+  );
 
   return (
     <div
@@ -38,19 +43,47 @@ const DisplayMap = ({ lat, lng }: Props) => {
         center={detailsPage ? { lat: lat!, lng: lng! } : currentLocation}
         defaultZoom={detailsPage ? 16 : 10}
       >
-        {filteredEvents?.map((event, i) => (
+        {detailsPage && (
           <MapMarker
-            lat={event?.lat}
-            lng={event?.lng}
-            category={event.category}
-            text={event.description}
-            id={event._id!}
+            lat={detailedEvent?.lat!}
+            lng={detailedEvent?.lng!}
+            category={detailedEvent?.category!}
+            text={detailedEvent?.description!}
+            id={detailedEvent?._id!}
             setShowIndex={setShowIndex}
             showIndex={showIndex}
-            index={i}
-            key={event?._id}
+            index={0}
           />
-        ))}
+        )}
+        {detailedEvent?.sightings &&
+          detailsPage &&
+          detailedEvent.sightings.map((event, i) => (
+            <MapMarker
+              lat={event?.lat}
+              lng={event?.lng}
+              category="sighting"
+              text={event.description}
+              id=""
+              setShowIndex={setShowIndex}
+              showIndex={showIndex}
+              index={i}
+              key={i}
+            />
+          ))}
+        {!detailsPage &&
+          filteredEvents?.map((event, i) => (
+            <MapMarker
+              lat={event?.lat}
+              lng={event?.lng}
+              category={event.category}
+              text={event.description}
+              id={event._id!}
+              setShowIndex={setShowIndex}
+              showIndex={showIndex}
+              index={i}
+              key={event?._id}
+            />
+          ))}
       </GoogleMapReact>
     </div>
   );
