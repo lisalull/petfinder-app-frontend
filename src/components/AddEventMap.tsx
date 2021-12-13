@@ -8,7 +8,7 @@ import NewMarker from "./NewMarker";
 const key = process.env.REACT_APP_API_KEY || "";
 
 const AddEventMap = () => {
-  const { currentLocation, getCurrentLocation, setShowAddEventMapHandler } =
+  const { currentLocation, setShowAddEventMapHandler } =
     useContext(EventsContext);
   const [marker, setMarker] = useState<Marker>();
   const [mapCenter, setMapCenter] = useState<Marker>(currentLocation);

@@ -1,5 +1,5 @@
 // import { Marker } from "@react-google-maps/api";
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import Event from "../models/Event";
 import Marker from "../models/Marker";
 

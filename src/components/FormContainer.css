@@ -1,0 +1,22 @@
+.FormContainer {
+  position: relative;
+  width: fit-content;
+}
+
+.FormContainer .signIn {
+  font-size: 16px;
+  white-space: nowrap;
+  background-color: #ffd166;
+  width: fit-content;
+  padding: 5px;
+}
+
+/* .FormContainer .closeButton {
+  width: 10%;
+  height: 20px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  text-align: center;
+  padding: 2px;
+} */
