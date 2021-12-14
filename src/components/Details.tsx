@@ -53,6 +53,18 @@ const Details = () => {
       )}
       {foundEvent?.category === "found" && <h1>Do you recognize me?</h1>}
       {foundEvent?.category === "sighting" && <h1>Pet sighting!</h1>}
+      {user?.uid! === foundEvent?.uid && !showConfirmation && (
+        <button onClick={() => setShowConfirmation(true)}>Reunited!</button>
+      )}
+      {showConfirmation && (
+        <p className="confirmParagraph">
+          Yay!!! Confirm Reunited and{" "}
+          <span className="removeLink" onClick={reunitedButtonHandler}>
+            Remove
+          </span>{" "}
+          from List?
+        </p>
+      )}
       <div className="content">
         {foundEvent?.category === "lost" && (
           <div className="lostPet">
@@ -66,7 +78,7 @@ const Details = () => {
             <p>Phone: {foundEvent.phoneNumber}</p>
             <p>Preferred Contact Method: {foundEvent.preferedContact}</p>
 
-            {foundEvent?.sightings && (
+            {/* {foundEvent?.sightings && (
               <div>
                 <h1>Known Sightings: </h1>
                 {foundEvent.sightings.map((sighting) => {
@@ -78,7 +90,7 @@ const Details = () => {
                   );
                 })}
               </div>
-            )}
+            )} */}
 
             {/* <Mailto email={foundEvent.email} obfuscate={true}>
             Email my pawrents!
@@ -100,36 +112,43 @@ const Details = () => {
           </div>
         )}
         {foundEvent?.category === "sighting" && (
-          <div className="foundPet">
+          <div className="sightedPet">
             {foundEvent.media && (
               <img src={foundEvent.media} alt="user upload" />
             )}
             <p>Seen on {foundEvent.date}</p>
             <p>{foundEvent.description}</p>
 
-            <button onClick={() => setShowList(true)}>Link to lost pet.</button>
+            {!showList ? (
+              <button onClick={() => setShowList(true)}>
+                Link to lost pet.
+              </button>
+            ) : (
+              <button onClick={() => setShowList(false)}>Nevermind</button>
+            )}
             {showList && (
               <LostPetsList linkSightingHandler={linkSightingHandler} />
             )}
           </div>
-        )}
-        {user?.uid! === foundEvent?.uid && !showConfirmation && (
-          <button onClick={() => setShowConfirmation(true)}>Reunited!</button>
-        )}
-        {showConfirmation && (
-          <p className="confirmParagraph">
-            Yay!!! Confirm Reunited and{" "}
-            <span className="removeLink" onClick={reunitedButtonHandler}>
-              Remove
-            </span>{" "}
-            from List?
-          </p>
         )}
         <div className="map">
           <p className="lastSeen">
             Reported {foundEvent?.category} at this location:
           </p>
           <DisplayMap lat={foundEvent?.lat!} lng={foundEvent?.lng!} />
+          {foundEvent?.sightings && (
+            <div>
+              <h1>Known Sightings: </h1>
+              {foundEvent.sightings.map((sighting) => {
+                return (
+                  <div>
+                    <p>Sighting Date: {sighting.date}</p>
+                    <p>Sighting Description: {sighting.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
           <button onClick={() => history.goBack()}>Back</button>
         </div>
       </div>

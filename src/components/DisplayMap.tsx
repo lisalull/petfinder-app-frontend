@@ -41,7 +41,7 @@ const DisplayMap = ({ lat, lng }: Props) => {
       <GoogleMapReact
         bootstrapURLKeys={{ key }}
         center={detailsPage ? { lat: lat!, lng: lng! } : currentLocation}
-        defaultZoom={detailsPage ? 16 : 10}
+        defaultZoom={detailsPage ? 12 : 10}
       >
         {detailsPage && (
           <MapMarker

@@ -16,7 +16,10 @@ const LostPetsList = ({ linkSightingHandler }: Props) => {
       {lostEvents.map((event) => (
         <li key={event._id}>
           <p>{event.name}</p>
-          <button onClick={() => linkSightingHandler(event)}>Link</button>
+          {event.media && <img src={event.media} alt="user upload of pet" />}
+          <p>
+            <button onClick={() => linkSightingHandler(event)}>Link</button>
+          </p>
         </li>
       ))}
     </ul>

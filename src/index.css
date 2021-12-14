@@ -10,6 +10,7 @@ ul {
 body {
   background-color: #118ab2;
   font-family: "Sanchez", serif;
+  width: 100vw;
 }
 
 button {

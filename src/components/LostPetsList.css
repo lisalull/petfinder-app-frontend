@@ -1,0 +1,17 @@
+.LostPetsList {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.LostPetsList img {
+  width: 150px;
+}
+
+.LostPetsList li {
+  list-style: none;
+  border: 1px solid black;
+  width: 200px;
+}

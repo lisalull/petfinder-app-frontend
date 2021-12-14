@@ -1,4 +1,3 @@
-import AddEventForm from "./AddEventForm";
 import FormContainer from "./FormContainer";
 import "./NewMarker.css";
 
