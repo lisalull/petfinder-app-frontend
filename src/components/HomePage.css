@@ -97,11 +97,12 @@
 }
 
 .fa-map-marked-alt {
-  color: white;
+  color: #ffd166;
+  margin: 10px;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #ffd166;
 }
 
 input:focus + .slider {
@@ -112,13 +113,16 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+  background-color: white;
 }
 
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+  background-color: white;
 }
 
 .slider.round:before {
   border-radius: 50%;
+  background-color: #ffd166;
 }
