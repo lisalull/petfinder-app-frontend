@@ -12,7 +12,7 @@ const Header = () => {
       <Link className="link" to="/">
         <h1>Find My Pawrents</h1>
       </Link>
-
+      {/* if we want to reload instead of link to homepage - onClick={() => window.location.reload()} */}
       <i className="fas fa-paw"></i>
 
       {user ? (

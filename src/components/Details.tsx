@@ -8,6 +8,9 @@ import { linkSightedEvent, updateReturned } from "../services/EventsService";
 import "./Details.css";
 import DisplayMap from "./DisplayMap";
 import LostPetsList from "./LostPetsList";
+import defaultDogPic from "../assets/dogDefault.jpg";
+import defaultCatPic from "../assets/catDefault.jpg";
+import defaultOtherPic from "../assets/otherDefault.jpg";
 
 interface RouteParams {
   id: string;
@@ -66,73 +69,64 @@ const Details = () => {
         </p>
       )}
       <div className="content">
-        {foundEvent?.category === "lost" && (
-          <div className="lostPet">
-            {foundEvent.media && (
-              <img src={foundEvent.media} alt="user upload" />
-            )}
-            <p>Lost on {foundEvent.date}</p>
-            <p>{foundEvent.description}</p>
-            <h2>Did you find me? Contact my pawrents!</h2>
-            <p>Email: {foundEvent.email}</p>
-            <p>Phone: {foundEvent.phoneNumber}</p>
-            <p>Preferred Contact Method: {foundEvent.preferedContact}</p>
+        <div>
+          {foundEvent?.media && (
+            <img src={foundEvent?.media} alt="user upload" />
+          )}
+          {!foundEvent?.media && foundEvent?.type === "dog" && (
+            <img src={defaultDogPic} alt="user upload" />
+          )}
+          {!foundEvent?.media && foundEvent?.type === "cat" && (
+            <img src={defaultCatPic} alt="user upload" />
+          )}
+          {!foundEvent?.media && foundEvent?.type === "other" && (
+            <img src={defaultOtherPic} alt="user upload" />
+          )}
+          {foundEvent?.category === "lost" && (
+            <div className="lostPet">
+              <p>Lost on {foundEvent.date}</p>
+              <p>{foundEvent.description}</p>
+              <h2>Did you find me? Contact my pawrents!</h2>
+              <p>Email: {foundEvent.email}</p>
+              <p>Phone: {foundEvent.phoneNumber}</p>
+              <p>Preferred Contact Method: {foundEvent.preferedContact}</p>
 
-            {/* {foundEvent?.sightings && (
-              <div>
-                <h1>Known Sightings: </h1>
-                {foundEvent.sightings.map((sighting) => {
-                  return (
-                    <div>
-                      <p>Sighting Date: {sighting.date}</p>
-                      <p>Sighting Description: {sighting.description}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            )} */}
-
-            {/* <Mailto email={foundEvent.email} obfuscate={true}>
+              {/* <Mailto email={foundEvent.email} obfuscate={true}>
             Email my pawrents!
           </Mailto>*/}
-          </div>
-        )}
+            </div>
+          )}
 
-        {foundEvent?.category === "found" && (
-          <div className="foundPet">
-            {foundEvent.media && (
-              <img src={foundEvent.media} alt="user upload" />
-            )}
-            <p>Found on {foundEvent.date}</p>
-            <p>{foundEvent.description}</p>
-            <h2>Are you my pawrents? Contact my finders!</h2>
-            <p>Email: {foundEvent.email}</p>
-            <p>Phone: {foundEvent.phoneNumber}</p>
-            <p>Preferred Contact Method: {foundEvent.preferedContact}</p>
-          </div>
-        )}
-        {foundEvent?.category === "sighting" && (
-          <div className="sightedPet">
-            {foundEvent.media && (
-              <img src={foundEvent.media} alt="user upload" />
-            )}
-            <p>Seen on {foundEvent.date}</p>
-            <p>{foundEvent.description}</p>
+          {foundEvent?.category === "found" && (
+            <div className="foundPet">
+              <p>Found on {foundEvent.date}</p>
+              <p>{foundEvent.description}</p>
+              <h2>Are you my pawrents? Contact my finders!</h2>
+              <p>Email: {foundEvent.email}</p>
+              <p>Phone: {foundEvent.phoneNumber}</p>
+              <p>Preferred Contact Method: {foundEvent.preferedContact}</p>
+            </div>
+          )}
+          {foundEvent?.category === "sighting" && (
+            <div className="sightedPet">
+              <p>Seen on {foundEvent.date}</p>
+              <p>{foundEvent.description}</p>
 
-            {!showList && (
-              <button onClick={() => setShowList(true)}>
-                Link to lost pet.
-              </button>
-            )}
-            {showList && (
-              <LostPetsList
-                showList={showList}
-                setShowList={setShowList}
-                linkSightingHandler={linkSightingHandler}
-              />
-            )}
-          </div>
-        )}
+              {!showList && (
+                <button onClick={() => setShowList(true)}>
+                  Link to lost pet.
+                </button>
+              )}
+              {showList && (
+                <LostPetsList
+                  showList={showList}
+                  setShowList={setShowList}
+                  linkSightingHandler={linkSightingHandler}
+                />
+              )}
+            </div>
+          )}
+        </div>
         <div className="map">
           <p className="lastSeen">
             Reported {foundEvent?.category} at this location:

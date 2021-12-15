@@ -17,7 +17,6 @@
 .EventItem img {
   width: 200px;
   max-height: 200px;
-  /* background-size: cover; */
   object-fit: cover;
   object-position: top;
 }
@@ -29,7 +28,11 @@
   border: solid 4px #06d6a0;
 }
 .EventItem.sighting {
-  border: solid 4px black;
+  border: solid 4px #3d6ab4ff;
+}
+
+.EventItem .details {
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
@@ -40,8 +43,5 @@
   }
   .EventItem p {
     margin: 0 10px;
-  }
-  .EventItem .details {
-    white-space: nowrap;
   }
 }
