@@ -16,12 +16,8 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
         checkProfile(newUser.uid).then((array) => {
           if (array.length) {
             setProfile(array[0]);
-            console.log(profile);
-          } else {
-            console.log("No user in database");
           }
         });
-        // testing purposes
       } else {
         setProfile(null);
       }
