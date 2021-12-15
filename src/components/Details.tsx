@@ -119,15 +119,17 @@ const Details = () => {
             <p>Seen on {foundEvent.date}</p>
             <p>{foundEvent.description}</p>
 
-            {!showList ? (
+            {!showList && (
               <button onClick={() => setShowList(true)}>
                 Link to lost pet.
               </button>
-            ) : (
-              <button onClick={() => setShowList(false)}>Nevermind</button>
             )}
             {showList && (
-              <LostPetsList linkSightingHandler={linkSightingHandler} />
+              <LostPetsList
+                showList={showList}
+                setShowList={setShowList}
+                linkSightingHandler={linkSightingHandler}
+              />
             )}
           </div>
         )}

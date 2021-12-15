@@ -16,6 +16,10 @@
 
 .EventItem img {
   width: 200px;
+  max-height: 200px;
+  /* background-size: cover; */
+  object-fit: cover;
+  object-position: top;
 }
 
 .EventItem.lost {
@@ -31,7 +35,7 @@
 @media only screen and (min-width: 768px) {
   .EventItem {
     display: flex;
-    flex-direction: row;
+    width: 25vw;
     justify-content: space-between;
   }
   .EventItem p {
