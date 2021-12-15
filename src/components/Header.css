@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #073b4c;
+  background-color: #101f4c;
   padding: 10px;
 }
 
@@ -11,16 +11,8 @@
   color: white;
   margin-top: 20px;
 }
-
 .Header .link {
   text-decoration: none;
-  color: white;
-}
-
-.Header .searchLinks {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
 }
 
 .Header .fa-paw {

@@ -9,7 +9,9 @@ interface Props {
   showIndex: number;
   index: number;
   text: string;
+  date: string;
   setShowIndex: (index: number) => void;
+  detailsPage: boolean;
 }
 
 const MapMarker = ({
@@ -19,22 +21,29 @@ const MapMarker = ({
   showIndex,
   index,
   id,
+  date,
+  detailsPage,
 }: Props) => {
   return (
     <div className="MapMarker">
-      {showIndex !== index ? (
-        <i
-          className={`fas fa-map-marker fa-2x ${category}`}
-          onClick={() => setShowIndex(index)}
-        ></i>
-      ) : (
+      <i
+        className={`fas fa-map-marker fa-2x ${category}`}
+        onClick={() => setShowIndex(index)}
+      ></i>
+      {showIndex === index && (
         <div className="marker-popup-container">
           <button onClick={() => setShowIndex(-1)}>X</button>
-
-          <p>{text}</p>
-          <Link to={`/details/${encodeURIComponent(id)}`}>
-            See more details
-          </Link>
+          {detailsPage ? (
+            <p>{date}</p>
+          ) : (
+            <>
+              {" "}
+              <p>{text}</p>
+              <Link to={`/details/${encodeURIComponent(id)}`}>
+                See more details
+              </Link>
+            </>
+          )}
         </div>
       )}
     </div>

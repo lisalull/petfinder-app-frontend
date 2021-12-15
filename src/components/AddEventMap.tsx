@@ -27,7 +27,7 @@ const AddEventMap = () => {
   };
 
   return (
-    <div className="AddEventMap" style={{ height: "79vh", width: "100%" }}>
+    <div className="AddEventMap" style={{ height: "87vh", width: "100%" }}>
       <button className="closeButton" onClick={setShowAddEventMapHandler}>
         X
       </button>

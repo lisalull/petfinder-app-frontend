@@ -1,1 +1,3 @@
-
+.DisplayMap .gm-control-active {
+  display: none;
+}

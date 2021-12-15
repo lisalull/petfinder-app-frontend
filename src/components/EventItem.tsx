@@ -7,8 +7,10 @@ interface Props {
 }
 
 const EventItem = ({ event }: Props) => {
+  let displayCategory = event.category.toUpperCase();
   return (
     <li className={`EventItem ${event.category}`}>
+      <p className="category">{displayCategory}</p>
       {event.media && <img src={event.media} alt="user upload" />}
       <p>{event.description}</p>
 

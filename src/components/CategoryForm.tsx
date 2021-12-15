@@ -65,7 +65,7 @@ const CategoryForm = ({ setCategory, showForm, setShowForm }: Props) => {
               </label>
             </div>
           </div>
-          <button>Submit</button>
+          <button className="reportButton">Make a Report</button>
         </form>
       )}
     </div>

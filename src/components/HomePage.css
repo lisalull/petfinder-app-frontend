@@ -6,11 +6,11 @@
 .HomePage button {
   border-radius: 0;
   border: none;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: #101935;
   width: 100%;
   border: 1px solid #101935;
-  padding: 10px 0px;
+  padding: 5px 0px;
   display: flex;
   text-align: center;
   justify-content: space-evenly;
@@ -18,14 +18,14 @@
   box-sizing: border-box;
 }
 
-.HomePage button.lostButton {
-  background-color: #ef476f;
+.HomePage button.lostButton:hover {
+  background-color: #f35b7e;
 }
-.HomePage button.foundButton {
-  background-color: #06d6a0;
+.HomePage button.foundButton:hover {
+  background-color: #18e2ac;
 }
-.HomePage button.sightingButton {
-  background-color: white;
+.HomePage button.sightingButton:hover {
+  background-color: rgb(96, 133, 192);
 }
 
 .HomePage button.selected {
@@ -40,12 +40,28 @@
   align-items: center;
 }
 
+.HomePage .buttons.map {
+  position: absolute;
+  z-index: 5;
+  width: 100vw;
+  top: 250px;
+}
+.HomePage .buttons.map .fa-plus {
+  background-color: #101f4c;
+  color: white;
+}
+
+.HomePage .buttons.map .fa-map-marked-alt {
+  color: #101f4c;
+}
+
 .fa-plus {
   padding: 10px;
   margin: 5px;
   background-color: white;
   border-radius: 50%;
   cursor: pointer;
+  color: #101f4c;
 }
 
 .HomePage .mapIcons {
@@ -97,12 +113,12 @@
 }
 
 .fa-map-marked-alt {
-  color: #ffd166;
+  color: white;
   margin: 10px;
 }
 
 input:checked + .slider {
-  background-color: #ffd166;
+  background-color: #101f4c;
 }
 
 input:focus + .slider {
@@ -124,5 +140,5 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-  background-color: #ffd166;
+  background-color: #101f4c;
 }

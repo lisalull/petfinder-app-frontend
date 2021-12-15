@@ -81,7 +81,7 @@ const HomePage = () => {
               Other
             </button>
           </div>
-          <div className="buttons">
+          <div className={`buttons ${showDisplayMap ? "map" : ""}`}>
             <div className="mapIcons">
               <label className="switch">
                 <input type="checkbox" onClick={setShowDisplayMapHandler} />

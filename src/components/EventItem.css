@@ -7,6 +7,11 @@
   justify-content: center;
   background-color: rgb(235, 231, 231);
   margin: 10px;
+  border-radius: 10px;
+}
+
+.EventItem .category {
+  font-weight: bold;
 }
 
 .EventItem img {
@@ -14,13 +19,13 @@
 }
 
 .EventItem.lost {
-  border: solid 5px #ef476f;
+  border: solid 4px #ef476f;
 }
 .EventItem.found {
-  border: solid 5px #06d6a0;
+  border: solid 4px #06d6a0;
 }
 .EventItem.sighting {
-  border: solid 5px black;
+  border: solid 4px black;
 }
 
 @media only screen and (min-width: 768px) {

@@ -1,8 +1,9 @@
 .MapMarker .marker-popup-container {
   height: 100px;
   width: 100px;
+  padding: 5px;
   background-color: white;
-  border: 1px solid #e5b0a4;
+  border: 1px solid #101f4c;
   border-radius: 5px;
   z-index: 2;
   position: relative;
@@ -39,5 +40,5 @@
 }
 
 .fa-map-marker.sighting {
-  color: black;
+  color: #3d6ab4ff;
 }

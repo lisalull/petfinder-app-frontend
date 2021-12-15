@@ -34,7 +34,7 @@ const DisplayMap = ({ lat, lng }: Props) => {
       style={
         detailsPage
           ? { height: "400px", width: "400px" }
-          : { height: "70vh", width: "100%" }
+          : { height: "75vh", width: "100%" }
       }
     >
       {!detailsPage && <SearchByCity />}
@@ -52,7 +52,9 @@ const DisplayMap = ({ lat, lng }: Props) => {
             id={detailedEvent?._id!}
             setShowIndex={setShowIndex}
             showIndex={showIndex}
-            index={0}
+            index={20}
+            detailsPage={detailsPage}
+            date={detailedEvent?.date!}
           />
         )}
         {detailedEvent?.sightings &&
@@ -68,6 +70,8 @@ const DisplayMap = ({ lat, lng }: Props) => {
               showIndex={showIndex}
               index={i}
               key={i}
+              detailsPage={detailsPage}
+              date={event?.date}
             />
           ))}
         {!detailsPage &&
@@ -82,6 +86,8 @@ const DisplayMap = ({ lat, lng }: Props) => {
               showIndex={showIndex}
               index={i}
               key={event?._id}
+              detailsPage={detailsPage}
+              date={event?.date}
             />
           ))}
       </GoogleMapReact>
