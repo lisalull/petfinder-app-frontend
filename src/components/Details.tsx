@@ -23,7 +23,7 @@ const Details = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showList, setShowList] = useState(false);
   let foundEvent = events.find((item: Event) => item._id === id);
-  console.log(foundEvent);
+  let displayCategory = foundEvent?.category.toUpperCase();
   const history = useHistory();
 
   const reunitedButtonHandler = () => {
@@ -57,7 +57,12 @@ const Details = () => {
       {foundEvent?.category === "found" && <h1>Do you recognize me?</h1>}
       {foundEvent?.category === "sighting" && <h1>Pet sighting!</h1>}
       {user?.uid! === foundEvent?.uid && !showConfirmation && (
-        <button onClick={() => setShowConfirmation(true)}>Reunited!</button>
+        <button
+          className="styledButton"
+          onClick={() => setShowConfirmation(true)}
+        >
+          Reunited!
+        </button>
       )}
       {showConfirmation && (
         <p className="confirmParagraph">
@@ -69,18 +74,35 @@ const Details = () => {
         </p>
       )}
       <div className="content">
-        <div>
+        <div className="imgAndText">
+          <p className="category">{displayCategory}</p>
           {foundEvent?.media && (
-            <img src={foundEvent?.media} alt="user upload" />
+            <img
+              className={foundEvent?.category}
+              src={foundEvent?.media}
+              alt="user upload"
+            />
           )}
           {!foundEvent?.media && foundEvent?.type === "dog" && (
-            <img src={defaultDogPic} alt="user upload" />
+            <img
+              className={foundEvent?.category}
+              src={defaultDogPic}
+              alt="user upload"
+            />
           )}
           {!foundEvent?.media && foundEvent?.type === "cat" && (
-            <img src={defaultCatPic} alt="user upload" />
+            <img
+              className={foundEvent?.category}
+              src={defaultCatPic}
+              alt="user upload"
+            />
           )}
           {!foundEvent?.media && foundEvent?.type === "other" && (
-            <img src={defaultOtherPic} alt="user upload" />
+            <img
+              className={foundEvent?.category}
+              src={defaultOtherPic}
+              alt="user upload"
+            />
           )}
           {foundEvent?.category === "lost" && (
             <div className="lostPet">
@@ -113,7 +135,10 @@ const Details = () => {
               <p>{foundEvent.description}</p>
 
               {!showList && (
-                <button onClick={() => setShowList(true)}>
+                <button
+                  className="styledButton"
+                  onClick={() => setShowList(true)}
+                >
                   Link to lost pet.
                 </button>
               )}
@@ -137,15 +162,17 @@ const Details = () => {
               <h1>Known Sightings: </h1>
               {foundEvent.sightings.map((sighting) => {
                 return (
-                  <div>
-                    <p>Sighting Date: {sighting.date}</p>
-                    <p>Sighting Description: {sighting.description}</p>
+                  <div className="knownSightings">
+                    <p>Date: {sighting.date}</p>
+                    <p>Description: {sighting.description}</p>
                   </div>
                 );
               })}
             </div>
           )}
-          <button onClick={() => history.goBack()}>Back</button>
+          <button className="styledButton" onClick={() => history.goBack()}>
+            Back
+          </button>
         </div>
       </div>
     </div>

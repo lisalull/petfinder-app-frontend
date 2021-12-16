@@ -25,10 +25,8 @@ const CategoryForm = ({ setCategory, showForm, setShowForm }: Props) => {
       )}
       {showForm && (
         <form onSubmit={categorySubmitHandler}>
-          <p className="title">
-            Mark the location where you Lost, Found, or Sighted a Pet!
-          </p>
-          <div className="field category">
+          <p className="title">Mark the location where you:</p>
+          <div className="field">
             <div>
               <input
                 type="radio"
@@ -38,7 +36,9 @@ const CategoryForm = ({ setCategory, showForm, setShowForm }: Props) => {
                 // defaultChecked
                 onChange={(e) => setCat(e.target.value)}
               />
-              <label htmlFor="lost">Lost (You lost your pet.)</label>
+              <label htmlFor="lost">
+                <span className="bold">Lost</span> a pet
+              </label>
             </div>
             <div>
               <input
@@ -49,7 +49,8 @@ const CategoryForm = ({ setCategory, showForm, setShowForm }: Props) => {
                 onChange={(e) => setCat(e.target.value)}
               />
               <label htmlFor="found">
-                Found (Pet is contained - looking for the pawrents!)
+                <span className="bold">Found</span> a pet (Pet is contained -
+                looking for pawrents!)
               </label>
             </div>
             <div>
@@ -61,7 +62,8 @@ const CategoryForm = ({ setCategory, showForm, setShowForm }: Props) => {
                 onChange={(e) => setCat(e.target.value)}
               />
               <label htmlFor="sighting">
-                Sighting (You spotted a lost pet!)
+                <span className="bold">Sighted</span> a pet (You spotted a lost
+                pet!)
               </label>
             </div>
           </div>

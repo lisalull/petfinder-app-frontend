@@ -1,9 +1,15 @@
+/* .SearchByCity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
 .SearchByCity form {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin: 5px 0px;
   background-color: #8f94a3;
 }
 
@@ -17,11 +23,10 @@
 }
 
 .SearchByCity button {
-  width: 10vw;
+  width: 30px;
   border: none;
   background-color: transparent;
-  margin: 0;
+  margin-left: 5px;
   padding: 0;
-  margin-right: 30px;
   cursor: pointer;
 }

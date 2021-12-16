@@ -3,22 +3,36 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* background-color: #549bb3; */
-  width: 100vw;
+}
+
+.Details h1 {
+  margin: 5px;
 }
 
 .Details img {
   width: 300px;
 }
 
+.Details img.lost {
+  border: 2px solid #f35b7e;
+}
+
+.Details img.found {
+  border: 2px solid #18e2ac;
+}
+
+.Details img.sighting {
+  border: 2px solid rgb(96, 133, 192);
+}
+
 .foundPet,
 .lostPet,
 .sightedPet {
   padding: 15px;
-  box-sizing: border-box;
 }
 
-.lastSeen {
+.lastSeen,
+.category {
   font-weight: bolder;
   font-size: x-large;
 }
@@ -42,7 +56,7 @@
   align-items: center;
 }
 
-.Details button {
+.Details .styledButton {
   margin: 20px;
   padding: 10px;
   background-color: #101f4c;
@@ -50,7 +64,13 @@
   border-radius: 3px;
 }
 
-@media only screen and (min-width: 768px) {
+.Details .knownSightings {
+  text-align: left;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 800px) {
   .Details .content {
     display: flex;
     flex-direction: row;
@@ -59,6 +79,14 @@
     padding-top: 10px;
     width: 100vw;
   }
+
+  .Details .imgAndText {
+    flex: 1;
+  }
+
+  .Details .map {
+    flex: 1;
+  }
   .Details h1 {
     margin: 10px;
   }
@@ -66,7 +94,8 @@
     width: 400px;
   }
 
-  .Details .lastSeen {
+  .Details .lastSeen,
+  .category {
     margin-bottom: 10px;
   }
 }
