@@ -42,6 +42,14 @@
   align-items: center;
 }
 
+.Details button {
+  margin: 20px;
+  padding: 10px;
+  background-color: #101f4c;
+  color: white;
+  border-radius: 3px;
+}
+
 @media only screen and (min-width: 768px) {
   .Details .content {
     display: flex;
@@ -60,8 +68,5 @@
 
   .Details .lastSeen {
     margin-bottom: 10px;
-  }
-  .Details button {
-    margin: 10px;
   }
 }

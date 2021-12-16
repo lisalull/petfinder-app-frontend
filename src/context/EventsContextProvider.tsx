@@ -80,6 +80,11 @@ const EventsContextProvider = ({ children }: Props) => {
     }
   };
 
+  const setBothMapsToFalse = () => {
+    setShowDisplayMap(false);
+    setShowAddEventMap(false);
+  };
+
   // const addEventHandler = (event: Event): void => {
   //   addEvent(event).then(() => {
   //     getEventsHandler();
@@ -117,8 +122,9 @@ const EventsContextProvider = ({ children }: Props) => {
         getEventsByType,
         showDisplayMap,
         setShowDisplayMapHandler,
-        showAddEventMap,
         setShowAddEventMapHandler,
+        showAddEventMap,
+        setBothMapsToFalse,
         getCurrentLocation,
         currentLocation,
         setCurrentLocation,

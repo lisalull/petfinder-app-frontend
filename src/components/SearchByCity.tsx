@@ -26,11 +26,12 @@ const SearchByCity = () => {
   return (
     <div className="SearchByCity">
       <form onSubmit={submitCityHandler}>
-        <label htmlFor="city">Search by address, city, or zip code: </label>
+        {/* <label htmlFor="city">Search by address, city, or zip code: </label> */}
         <input
           type="text"
           name="city"
           id="city"
+          placeholder="Search by address, city, or zip code"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />

@@ -7,6 +7,15 @@
   background-color: #8f94a3;
 }
 
+.SearchByCity #city {
+  padding: 5px;
+  width: 260px;
+}
+
+.SearchByCity #city::placeholder {
+  font-size: 16px;
+}
+
 .SearchByCity button {
   width: 10vw;
   border: none;

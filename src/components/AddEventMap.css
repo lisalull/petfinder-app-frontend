@@ -4,9 +4,11 @@
 
 .AddEventMap .closeButton {
   position: absolute;
-  top: 1px;
+  top: -5px;
+  font-weight: bold;
+  border-radius: 3px;
   right: 1px;
-  width: 25px;
-  padding: 5px;
+  width: 30px;
+  padding: 10px;
   z-index: 1000;
 }

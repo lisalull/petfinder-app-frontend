@@ -21,6 +21,7 @@ interface EventsContextModel {
   getEventsHandler: () => void;
   setEvents: (events: Event[]) => void;
   setFilteredEvents: (events: Event[]) => void;
+  setBothMapsToFalse: () => void;
   // setReturned: (events: Event[]) => void;
 }
 
@@ -41,6 +42,7 @@ const defaultValues: EventsContextModel = {
   currentLocation: { lat: 5, lng: 5 },
   getEventsHandler: () => {},
   setEvents: () => {},
+  setBothMapsToFalse: () => {},
   setFilteredEvents: () => {},
   // setReturned: () => {},
 };
